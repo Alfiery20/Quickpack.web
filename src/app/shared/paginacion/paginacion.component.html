@@ -1,0 +1,31 @@
+<nav class="flex justify-center mt-4">
+    <ul class="inline-flex items-center space-x-1">
+        <!-- Botón anterior -->
+        <li>
+            <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1"
+                class="px-3 py-1 border rounded-lg text-sm bg-white hover:bg-gray-100 disabled:opacity-50">
+                Anterior
+            </button>
+        </li>
+
+        <!-- Páginas dinámicas -->
+        <li *ngFor="let page of pages">
+            <button *ngIf="page !== '...'; else dots" (click)="goToPage(page)"
+                [class.bg-blue-600]="page === currentPage" [class.text-white]="page === currentPage"
+                class="px-3 py-1 border rounded-lg text-sm hover:bg-gray-100">
+                {{ page }}
+            </button>
+            <ng-template #dots>
+                <span class="px-3 py-1 text-gray-500">...</span>
+            </ng-template>
+        </li>
+
+        <!-- Botón siguiente -->
+        <li>
+            <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages"
+                class="px-3 py-1 border rounded-lg text-sm bg-white hover:bg-gray-100 disabled:opacity-50">
+                Siguiente
+            </button>
+        </li>
+    </ul>
+</nav>

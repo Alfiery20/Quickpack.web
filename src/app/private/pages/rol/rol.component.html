@@ -1,0 +1,82 @@
+<div class="bg-white p-6 rounded-2xl shadow-md">
+    <section>
+        <h1 class="text-2xl font-bold text-gray-800">Roles</h1>
+        <hr class="my-3 border-gray-300">
+    </section>
+
+    <div class="mt-5 grid grid-cols-1 sm:grid-cols-6 gap-4 items-end">
+        <div class="sm:col-span-2">
+            <label for="first-name" class="block text-sm font-medium text-gray-900">Nombre</label>
+            <div class="mt-2">
+                <input id="first-name" type="text" name="first-name" autocomplete="given-name"
+                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
+            </div>
+        </div>
+
+        <div class="sm:col-span-2 flex items-end">
+            <button
+                class="w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="mt-2 flex justify-end">
+        <button
+            class="px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
+            <i class="bi bi-plus"></i>
+            Agregar
+        </button>
+    </div>
+
+    <div class="mt-5 overflow-x-auto">
+        <table class="min-w-full border border-gray-200 divide-y divide-gray-200 rounded-lg shadow-md">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        Nr.
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        Id
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        Nombre
+                    </th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        Estado
+                    </th>
+                    <th class="px-6 py-3 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Juan Pérez</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">juanexample.com</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
+                        <button
+                            class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs hover:bg-blue-700">Editar</button>
+                        <button
+                            class="px-3 py-1 bg-red-600 text-white rounded-lg text-xs hover:bg-red-700 ml-2">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">María López</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">mariaexample.com</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
+                        <button
+                            class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs hover:bg-blue-700">Editar</button>
+                        <button
+                            class="px-3 py-1 bg-red-600 text-white rounded-lg text-xs hover:bg-red-700 ml-2">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <app-paginacion [totalPages]=20 [currentPage]="10" (pageChange)="null"></app-paginacion>
+    </div>
+
+
+</div>

@@ -1,0 +1,55 @@
+<div class="flex min-h-screen bg-gray-100">
+    <!-- SIDEBAR -->
+    <aside class="bg-gray-800 text-white transition-all duration-300 overflow-hidden"
+        [ngClass]="{ 'w-64': sidebarOpen, 'w-0': !sidebarOpen }">
+        <div class="p-4" *ngIf="sidebarOpen">
+            <h2 class="text-xl font-bold mb-4">Menú</h2>
+            <nav class="flex flex-col space-y-2">
+                @for (item of this.menus; track $index) {
+                <div>
+                    <!-- Botón del menú padre -->
+                    <button (click)="toggleMenu(item)"
+                        class="flex items-center justify-between w-full hover:bg-gray-700 p-2 rounded text-left">
+                        <div class="flex items-center space-x-2">
+                            <i class="bi {{item.icono}} text-white"></i>
+                            <span>{{item.nombre}}</span>
+                        </div>
+                        <!-- Icono flecha -->
+                        <i class="bi" [ngClass]="item.isOpen ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                    </button>
+
+                    <!-- Submenú desplegable -->
+                    <div class="flex flex-col pl-6 overflow-hidden transition-all duration-300 ease-in-out"
+                        [ngClass]="item.isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'">
+                        @for (menuHijo of item.menuHijo; track $index) {
+                        <a [routerLink]="menuHijo.ruta"
+                            class="hover:bg-gray-600 p-2 rounded flex items-center space-x-2">
+                            <i class="bi {{menuHijo.icono}} text-white"></i>
+                            <span>{{menuHijo.nombre}}</span>
+                        </a>
+                        }
+                    </div>
+                </div>
+                }
+            </nav>
+
+        </div>
+    </aside>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="flex flex-col flex-1">
+        <!-- NAVBAR -->
+        <header class="flex items-center justify-between bg-red-700 text-white p-4 shadow-md">
+            <button (click)="toggleSidebar()" aria-label="Abrir menú"
+                class="text-2xl focus:outline-none cursor-pointer">
+                ☰
+            </button>
+            <h1 class="text-lg font-semibold">Mi Aplicación</h1>
+        </header>
+
+        <!-- CONTENIDO -->
+        <main class="flex-1 p-6">
+            <router-outlet> </router-outlet>
+        </main>
+    </div>
+</div>
