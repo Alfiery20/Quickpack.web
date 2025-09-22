@@ -11,8 +11,8 @@
         <!-- Páginas dinámicas -->
         <li *ngFor="let page of pages">
             <button *ngIf="page !== '...'; else dots" (click)="goToPage(page)"
-                [class.bg-blue-600]="page === currentPage" [class.text-white]="page === currentPage"
-                class="px-3 py-1 border rounded-lg text-sm hover:bg-gray-100">
+                [class.bg-red-500]="page === currentPage" [class.text-white]="page === currentPage"
+                class="px-3 py-1 border rounded-lg text-sm hover:bg-red-700">
                 {{ page }}
             </button>
             <ng-template #dots>

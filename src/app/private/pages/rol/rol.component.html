@@ -22,7 +22,7 @@
     </div>
 
     <div class="mt-2 flex justify-end">
-        <button
+        <button (click)="abrirModal()"
             class="px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
             <i class="bi bi-plus"></i>
             Agregar
@@ -67,10 +67,16 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">María López</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">mariaexample.com</td>
                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
-                        <button
-                            class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs hover:bg-blue-700">Editar</button>
-                        <button
-                            class="px-3 py-1 bg-red-600 text-white rounded-lg text-xs hover:bg-red-700 ml-2">Eliminar</button>
+                        <div class="inline-flex rounded-md shadow-sm" role="group">
+                            <button type="button"
+                                class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-l-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button type="button"
+                                class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-r-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -80,3 +86,5 @@
 
 
 </div>
+
+<app-agregar-editar-rol [isOpen]="modalAbierto" (close)="cerrarModal()"></app-agregar-editar-rol>

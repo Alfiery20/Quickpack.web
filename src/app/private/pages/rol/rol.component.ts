@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginacionComponent } from "../../../shared/paginacion/paginacion.component";
+import { AgregarEditarRolComponent } from "./agregar-editar-rol/agregar-editar-rol.component";
 
 @Component({
   selector: 'app-rol',
-  imports: [CommonModule, ReactiveFormsModule, PaginacionComponent],
+  imports: [CommonModule, ReactiveFormsModule, PaginacionComponent, AgregarEditarRolComponent],
   templateUrl: './rol.component.html',
   styleUrl: './rol.component.scss'
 })
@@ -48,5 +49,15 @@ export class RolComponent implements OnInit {
 
   EliminarCategoria(id: number) {
     alert('Eliminar categoría con id: ' + id);
+  }
+
+  modalAbierto = false;
+
+  abrirModal() {
+    this.modalAbierto = true;
+  }
+
+  cerrarModal() {
+    this.modalAbierto = false;
   }
 }
