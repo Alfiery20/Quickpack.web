@@ -7,23 +7,23 @@
     <div class="mt-5 grid grid-cols-1 sm:grid-cols-6 gap-4 items-end">
         <div class="sm:col-span-2">
             <label for="first-name" class="block text-sm font-medium text-gray-900">Nombre</label>
-            <div class="mt-2">
-                <input id="first-name" type="text" name="first-name" autocomplete="given-name"
+            <form class="mt-2" [formGroup]="formulario">
+                <input id="first-name" type="text" name="first-name" autocomplete="given-name" formControlName="nombre"
                     class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
-            </div>
+            </form>
         </div>
 
         <div class="sm:col-span-2 flex items-end">
-            <button
-                class="w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
+            <button (click)="ObtenerRoles()"
+                class="cursor-pointer w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
                 <i class="bi bi-search"></i>
             </button>
         </div>
     </div>
 
     <div class="mt-2 flex justify-end">
-        <button (click)="abrirModal()"
-            class="px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
+        <button (click)="abrirModalAgregarEditar()"
+            class="cursor-pointer px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
             <i class="bi bi-plus"></i>
             Agregar
         </button>
@@ -51,40 +51,42 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Juan Pérez</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">juanexample.com</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
-                        <button
-                            class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs hover:bg-blue-700">Editar</button>
-                        <button
-                            class="px-3 py-1 bg-red-600 text-white rounded-lg text-xs hover:bg-red-700 ml-2">Eliminar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">María López</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">mariaexample.com</td>
+                <tr *ngFor="let rol of roles; let i = index" [ngClass]="{ 'bg-gray-50': i % 2 === 0 }">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ i + 1}}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ rol.id }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ rol.nombre }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ rol.estado }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
                         <div class="inline-flex rounded-md shadow-sm" role="group">
-                            <button type="button"
-                                class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-l-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
+                            <button type="button" (click)="abrirModalAgregarEditar(rol.id)"
+                                class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-l-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
-                            <button type="button"
-                                class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-r-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
-                                <i class="bi bi-trash"></i>
+                            <button type="button" (click)="abrirModalAsignarPermisos(rol.id)"
+                                class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
+                                <i class="bi bi-menu-app"></i>
+                            </button>
+                            <button type="button" (click)="CambiarEstado(rol.id)"
+                                [ngClass]="{ 'bg-green-600 hover:bg-green-700 focus:ring-green-400': rol.estado === 'INACTIVO', 'bg-red-600 hover:bg-red-700 focus:ring-red-400': rol.estado === 'ACTIVO' }"
+                                class="cursor-pointer px-4 py-2 text-sm font-medium text-white rounded-r-lg focus:outline-none focus:ring-2">
+                                <i *ngIf="rol.estado === 'ACTIVO'; else reciclar" class="bi bi-trash"></i>
+                                <ng-template #reciclar>
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </ng-template>
                             </button>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <app-paginacion [totalPages]=20 [currentPage]="10" (pageChange)="null"></app-paginacion>
+        <app-paginacion [totalPages]="this.totalPaginas" [currentPage]="this.pagina" [total]="total"
+            (pageChange)="Paginar($event)"></app-paginacion>
     </div>
 
 
 </div>
 
-<app-agregar-editar-rol [isOpen]="modalAbierto" (close)="cerrarModal()"></app-agregar-editar-rol>
+<app-agregar-editar-rol [isOpen]="modalAbiertoAgregarEditar" (close)="cerrarModalAgregarEditar()"
+    [idRol]="idRolSeleccionado"></app-agregar-editar-rol>
+
+<app-asignar-menu [isOpen]="modalAbiertoAsignarPermisos" (close)="cerrarModalPermisos()" [idRol]="idRolSeleccionado"></app-asignar-menu>

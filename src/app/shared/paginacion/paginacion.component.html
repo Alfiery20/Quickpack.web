@@ -1,5 +1,11 @@
-<nav class="flex justify-center mt-4">
-    <ul class="inline-flex items-center space-x-1">
+<nav class="flex items-center justify-between mt-4">
+    <!-- Total de resultados a la izquierda -->
+    <div class="text-sm text-gray-600">
+        Total de resultados: <span class="font-semibold">{{ total }}</span> resultados
+    </div>
+
+    <!-- Paginación centrada -->
+    <ul class="inline-flex items-center space-x-1 mx-auto">
         <!-- Botón anterior -->
         <li>
             <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1"
@@ -11,7 +17,8 @@
         <!-- Páginas dinámicas -->
         <li *ngFor="let page of pages">
             <button *ngIf="page !== '...'; else dots" (click)="goToPage(page)"
-                [class.bg-red-500]="page === currentPage" [class.text-white]="page === currentPage"
+                [class.bg-red-500]="page === currentPage"
+                [class.text-white]="page === currentPage"
                 class="px-3 py-1 border rounded-lg text-sm hover:bg-red-700">
                 {{ page }}
             </button>
