@@ -10,6 +10,9 @@ import { EditarRolRequest } from '../models/EditarRol/EditarRolRequest';
 import { EditarRolResponse } from '../models/EditarRol/EditarRolResponse';
 import { EditarEstadoRolResponse } from '../models/EditarEstadoRol/EditarEstadoRolResponse';
 import { ObtenerPermisosRolResponse } from '../models/ObtenerPermisosRol/ObtenerPermisosRolResponse';
+import { AsignarPermisoRequest } from '../models/AsignarPermiso/AsignarPermisoRequest';
+import { AsignarPermisoResponse } from '../models/AsignarPermiso/AsignarPermisoResponse';
+import { ObtenerRolMenuResponse } from '../models/ObtenerRolMenu/ObtenerRolMenuResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +47,16 @@ export class RolService extends Api {
   ObtenerPermisosRol(idRol: number): Observable<Array<ObtenerPermisosRolResponse>> {
     const uri = `${this.url}Rol/obtenerPermisoRol/${idRol}`;
     return this.http.get<Array<ObtenerPermisosRolResponse>>(uri, { headers: this._headers });
+  }
+
+  AsignarPermiso(request: AsignarPermisoRequest): Observable<AsignarPermisoResponse> {
+    const uri = `${this.url}Rol/asignarPermiso`;
+    return this.http.post<AsignarPermisoResponse>(uri, request, { headers: this._headers });
+  }
+
+  ObtenerRolMenu(): Observable<Array<ObtenerRolMenuResponse>> {
+    const uri = `${this.url}Rol/obtenerRolMenu`;
+    return this.http.get<Array<ObtenerRolMenuResponse>>(uri, { headers: this._headers });
   }
 
 }

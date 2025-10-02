@@ -45,8 +45,6 @@ export class AgregarEditarRolComponent implements OnChanges {
           });
         });
     }
-
-
   }
 
   nombreRol: string = '';
@@ -56,10 +54,10 @@ export class AgregarEditarRolComponent implements OnChanges {
     this.isOpen = false;
   }
 
-  onSave() {    
+  onSave() {
     if (this.idRol == 0) {
       this.AgregarRol();
-    }else {
+    } else {
       this.EditarRol();
     }
   }
@@ -77,6 +75,12 @@ export class AgregarEditarRolComponent implements OnChanges {
             icon: "success"
           });
           this.onClose();
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: request.mensaje,
+            icon: "error"
+          });
         }
       }
     );
@@ -96,6 +100,12 @@ export class AgregarEditarRolComponent implements OnChanges {
             icon: "success"
           });
           this.onClose();
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: request.mensaje,
+            icon: "error"
+          });
         }
       }
     );

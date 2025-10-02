@@ -103,7 +103,7 @@ export class RolComponent implements OnInit {
             if (response.codigo == "OK") {
               Swal.fire({
                 title: "Conforme!",
-                text: "El estado del rol, ha sido modificado.",
+                text: response.mensaje,
                 icon: "success"
               });
             } else {
