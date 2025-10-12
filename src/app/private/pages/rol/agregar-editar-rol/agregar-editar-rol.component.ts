@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RolService } from '../../../../core/services/rol.service';
-import { RegistrarRolRequest } from '../../../../core/models/RegistrarRol/RegistrarRolRequest';
+import { RegistrarRolRequest } from '../../../../core/models/Rol/RegistrarRol/RegistrarRolRequest';
 import Swal from 'sweetalert2';
-import { VerRolResponse } from '../../../../core/models/VerRol/VerRolResponse';
-import { EditarRolRequest } from '../../../../core/models/EditarRol/EditarRolRequest';
+import { VerRolResponse } from '../../../../core/models/Rol/VerRol/VerRolResponse';
+import { EditarRolRequest } from '../../../../core/models/Rol/EditarRol/EditarRolRequest';
 
 @Component({
   selector: 'app-agregar-editar-rol',
@@ -110,4 +110,11 @@ export class AgregarEditarRolComponent implements OnChanges {
       }
     );
   }
+
+  ValidarFormulario() {
+    var nombre: string = this.formulario.value.nombre
+
+    return (nombre.length > 0)
+  }
+
 }

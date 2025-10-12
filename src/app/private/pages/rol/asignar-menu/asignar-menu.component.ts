@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { RolService } from '../../../../core/services/rol.service';
 import { CommonModule } from '@angular/common';
-import { ObtenerPermisosRolResponse } from '../../../../core/models/ObtenerPermisosRol/ObtenerPermisosRolResponse';
-import { AsignarPermisoRequest } from '../../../../core/models/AsignarPermiso/AsignarPermisoRequest';
+import { ObtenerPermisosRolResponse } from '../../../../core/models/Rol/ObtenerPermisosRol/ObtenerPermisosRolResponse';
+import { AsignarPermisoRequest } from '../../../../core/models/Rol/AsignarPermiso/AsignarPermisoRequest';
 import Swal from 'sweetalert2';
 
 @Component({

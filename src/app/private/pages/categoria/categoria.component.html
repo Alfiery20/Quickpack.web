@@ -1,6 +1,6 @@
 <div class="bg-white p-6 rounded-2xl shadow-md min-w-[50%] max-w-[100%]">
     <section>
-        <h1 class="text-2xl font-bold text-gray-800">Tipo de Producto</h1>
+        <h1 class="text-2xl font-bold text-gray-800">Categoria</h1>
         <hr class="my-3 border-gray-300">
     </section>
 
@@ -14,7 +14,7 @@
         </div>
 
         <div class="sm:col-span-2 flex items-end">
-            <button (click)="ObtenerTipoProducto()"
+            <button (click)="ObtenerCategoria()"
                 class="cursor-pointer w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
                 <i class="bi bi-search"></i>
             </button>
@@ -51,21 +51,21 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                <tr *ngFor="let tipoProducto of tipoProductos; let i = index" [ngClass]="{ 'bg-gray-50': i % 2 === 0 }">
+                <tr *ngFor="let categoria of categorias; let i = index" [ngClass]="{ 'bg-gray-50': i % 2 === 0 }">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ i + 1}}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ tipoProducto.id }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ tipoProducto.nombre }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ tipoProducto.estado }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ categoria.id }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ categoria.nombre }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ categoria.estado }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
                         <div class="inline-flex rounded-md shadow-sm" role="group">
-                            <button type="button" (click)="abrirModalAgregarEditar(tipoProducto.id)"
+                            <button type="button" (click)="abrirModalAgregarEditar(categoria.id)"
                                 class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-l-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
-                            <button type="button" (click)="CambiarEstado(tipoProducto.id)"
-                                [ngClass]="{ 'bg-green-600 hover:bg-green-700 focus:ring-green-400': tipoProducto.estado === 'INACTIVO', 'bg-red-600 hover:bg-red-700 focus:ring-red-400': tipoProducto.estado === 'ACTIVO' }"
+                            <button type="button" (click)="CambiarEstado(categoria.id)"
+                                [ngClass]="{ 'bg-green-600 hover:bg-green-700 focus:ring-green-400': categoria.estado === 'INACTIVO', 'bg-red-600 hover:bg-red-700 focus:ring-red-400': categoria.estado === 'ACTIVO' }"
                                 class="cursor-pointer px-4 py-2 text-sm font-medium text-white rounded-r-lg focus:outline-none focus:ring-2">
-                                <i *ngIf="tipoProducto.estado === 'ACTIVO'; else reciclar" class="bi bi-trash"></i>
+                                <i *ngIf="categoria.estado === 'ACTIVO'; else reciclar" class="bi bi-trash"></i>
                                 <ng-template #reciclar>
                                     <i class="bi bi-arrow-clockwise"></i>
                                 </ng-template>
@@ -81,5 +81,5 @@
 
 </div>
 
-<app-agregar-editar-tipo-producto [isOpen]="modalAbiertoAgregarEditar" (close)="cerrarModalAgregarEditar()"
-    [idTipoProducto]="idTipProductoSeleccionado"></app-agregar-editar-tipo-producto>
+<app-agregar-editar-categoria [isOpen]="modalAbiertoAgregarEditar" (close)="cerrarModalAgregarEditar()"
+    [idCategoria]="idCategoriaSeleccionado"></app-agregar-editar-categoria>

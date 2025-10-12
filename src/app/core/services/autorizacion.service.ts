@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Api } from '../models/utils/Api';
 import { Observable } from 'rxjs';
-import { IniciarSesionResponse } from '../models/IniciarSesion/IniciarSesionResponse';
-import { ObtenerMenuRequest } from '../models/ObtenerMenu/ObtenerMenuRequest';
-import { ObtenerMenuResponse } from '../models/ObtenerMenu/ObtenerMenuResponse';
+import { IniciarSesionResponse } from '../models/Autorizacion/IniciarSesion/IniciarSesionResponse';
+import { ObtenerMenuRequest } from '../models/Autorizacion/ObtenerMenu/ObtenerMenuRequest';
+import { ObtenerMenuResponse } from '../models/Autorizacion/ObtenerMenu/ObtenerMenuResponse';
 
 @Injectable({
   providedIn: 'root'

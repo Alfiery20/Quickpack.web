@@ -4,8 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PaginacionComponent } from "../../../shared/paginacion/paginacion.component";
 import { AgregarEditarRolComponent } from "./agregar-editar-rol/agregar-editar-rol.component";
 import { RolService } from '../../../core/services/rol.service';
-import { ObtenerRolRequest } from '../../../core/models/ObtenerRol/ObtenerRolRequest';
-import { Rol } from '../../../core/models/ObtenerRol/ObtenerRolResponse';
+import { ObtenerRolRequest } from '../../../core/models/Rol/ObtenerRol/ObtenerRolRequest';
+import { Rol } from '../../../core/models/Rol/ObtenerRol/ObtenerRolResponse';
 import Swal from 'sweetalert2';
 import { AsignarMenuComponent } from "./asignar-menu/asignar-menu.component";
 

@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Api } from '../models/utils/Api';
-import { RegistrarRolRequest } from '../models/RegistrarRol/RegistrarRolRequest';
-import { RegistrarRolResponse } from '../models/RegistrarRol/RegistrarRolResponse';
+import { RegistrarRolRequest } from '../models/Rol//RegistrarRol/RegistrarRolRequest';
+import { RegistrarRolResponse } from '../models/Rol//RegistrarRol/RegistrarRolResponse';
 import { Observable } from 'rxjs';
-import { ObtenerRolRequest } from '../models/ObtenerRol/ObtenerRolRequest';
-import { ObtenerRolResponse } from '../models/ObtenerRol/ObtenerRolResponse';
-import { VerRolResponse } from '../models/VerRol/VerRolResponse';
-import { EditarRolRequest } from '../models/EditarRol/EditarRolRequest';
-import { EditarRolResponse } from '../models/EditarRol/EditarRolResponse';
-import { EditarEstadoRolResponse } from '../models/EditarEstadoRol/EditarEstadoRolResponse';
-import { ObtenerPermisosRolResponse } from '../models/ObtenerPermisosRol/ObtenerPermisosRolResponse';
-import { AsignarPermisoRequest } from '../models/AsignarPermiso/AsignarPermisoRequest';
-import { AsignarPermisoResponse } from '../models/AsignarPermiso/AsignarPermisoResponse';
-import { ObtenerRolMenuResponse } from '../models/ObtenerRolMenu/ObtenerRolMenuResponse';
+import { ObtenerRolRequest } from '../models/Rol//ObtenerRol/ObtenerRolRequest';
+import { ObtenerRolResponse } from '../models/Rol//ObtenerRol/ObtenerRolResponse';
+import { VerRolResponse } from '../models/Rol/VerRol/VerRolResponse';
+import { EditarRolRequest } from '../models/Rol//EditarRol/EditarRolRequest';
+import { EditarRolResponse } from '../models/Rol//EditarRol/EditarRolResponse';
+import { EditarEstadoRolResponse } from '../models/Rol//EditarEstadoRol/EditarEstadoRolResponse';
+import { ObtenerPermisosRolResponse } from '../models/Rol//ObtenerPermisosRol/ObtenerPermisosRolResponse';
+import { AsignarPermisoRequest } from '../models/Rol/AsignarPermiso/AsignarPermisoRequest';
+import { AsignarPermisoResponse } from '../models/Rol/AsignarPermiso/AsignarPermisoResponse';
+import { ObtenerRolMenuResponse } from '../models/Rol/ObtenerRolMenu/ObtenerRolMenuResponse';
 
 @Injectable({
   providedIn: 'root'

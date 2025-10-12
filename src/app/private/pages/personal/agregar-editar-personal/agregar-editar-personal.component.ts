@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { EmpleadoService } from '../../../../core/services/empleado.service';
 import { CommonModule } from '@angular/common';
 import { RolService } from '../../../../core/services/rol.service';
-import { ObtenerRolMenuResponse } from '../../../../core/models/ObtenerRolMenu/ObtenerRolMenuResponse';
-import { VerPersonalResponse } from '../../../../core/models/VerPersonal/VerPersonalResponse';
-import { RegistrarEmpleadoRequest } from '../../../../core/models/RegistrarEmpleado/RegistrarEmpleadoRequest';
+import { ObtenerRolMenuResponse } from '../../../../core/models/Rol/ObtenerRolMenu/ObtenerRolMenuResponse';
+import { VerPersonalResponse } from '../../../../core/models/Empleado/VerPersonal/VerPersonalResponse';
+import { RegistrarEmpleadoRequest } from '../../../../core/models/Empleado/RegistrarEmpleado/RegistrarEmpleadoRequest';
 import Swal from 'sweetalert2';
-import { EditarEmpleadoRequest } from '../../../../core/models/EditarEmpleado/EditarEmpleadoRequest';
+import { EditarEmpleadoRequest } from '../../../../core/models/Empleado/EditarEmpleado/EditarEmpleadoRequest';
 
 @Component({
   selector: 'app-agregar-editar-personal',
@@ -100,7 +100,7 @@ export class AgregarEditarPersonalComponent implements OnChanges, OnInit {
       clave: this.formulario.value.clave,
       idRol: this.formulario.value.rol
     }
-    
+
     this.empleadoService.RegistrarEmpleado(nuevoEmpleado).subscribe(
       (response) => {
         if (response.codigo == 'OK') {
@@ -130,7 +130,7 @@ export class AgregarEditarPersonalComponent implements OnChanges, OnInit {
       telefono: this.formulario.value.telefono,
       idRol: this.formulario.value.rol
     }
-    
+
     this.empleadoService.EditarEmpleado(editarEmpleado).subscribe(
       (response) => {
         if (response.codigo == 'OK') {
@@ -149,5 +149,23 @@ export class AgregarEditarPersonalComponent implements OnChanges, OnInit {
         }
       }
     )
+  }
+
+  ValidarFormulario() {
+    var tipoDocumento: string = this.formulario.value.tipoDocumento
+    var nroDocumento: string = this.formulario.value.nroDocumento
+    var nombre: string = this.formulario.value.nombre
+    var apellidoPaterno: string = this.formulario.value.apellidoPaterno
+    var apellidoMaterno: string = this.formulario.value.apellidoMaterno
+    var telefono: string = this.formulario.value.telefono
+    var correo: string = this.formulario.value.correo
+    var clave: string = this.formulario.value.clave
+    var rol: number = this.formulario.value.rol
+
+    return (tipoDocumento.length > 0) && (nroDocumento.length > 0) &&
+      (nombre.length > 0) && (apellidoPaterno.length > 0) &&
+      (apellidoMaterno.length > 0) && (telefono.length > 0) &&
+      (correo.length > 0) && (clave.length > 0) &&
+      (rol > 0)
   }
 }

@@ -3,7 +3,7 @@ import { AutenticacionService } from '../../../core/services/autenticacion.servi
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../../core/services/local-storage.service';
-import { IniciarSesionRequest } from '../../../core/models/IniciarSesion/IniciarSesionRequest';
+import { IniciarSesionRequest } from '../../../core/models/Autorizacion/IniciarSesion/IniciarSesionRequest';
 import Swal from 'sweetalert2'
 
 @Component({

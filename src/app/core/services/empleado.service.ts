@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Api } from '../models/utils/Api';
-import { ObtenerEmpleadoRequest } from '../models/ObtenerEmpleado/ObtenerEmpleadoRequest';
-import { ObtenerEmpleadoResponse } from '../models/ObtenerEmpleado/ObtenerEmpleadoResponse';
+import { ObtenerEmpleadoRequest } from '../models/Empleado/ObtenerEmpleado/ObtenerEmpleadoRequest';
+import { ObtenerEmpleadoResponse } from '../models/Empleado/ObtenerEmpleado/ObtenerEmpleadoResponse';
 import { Observable } from 'rxjs';
-import { EditarEstadoEmpleadoResponse } from '../models/EditarEstadoEmpleado/EditarEstadoEmpleadoResponse';
-import { VerPersonalResponse } from '../models/VerPersonal/VerPersonalResponse';
-import { RegistrarEmpleadoRequest } from '../models/RegistrarEmpleado/RegistrarEmpleadoRequest';
-import { RegistrarEmpleadoReponse } from '../models/RegistrarEmpleado/RegistrarEmpleadoResponse';
-import { EditarEmpleadoRequest } from '../models/EditarEmpleado/EditarEmpleadoRequest';
-import { EditarEmpleadoResponse } from '../models/EditarEmpleado/EditarEmpleadoResponse';
+import { EditarEstadoEmpleadoResponse } from '../models/Empleado/EditarEstadoEmpleado/EditarEstadoEmpleadoResponse';
+import { VerPersonalResponse } from '../models/Empleado/VerPersonal/VerPersonalResponse';
+import { RegistrarEmpleadoRequest } from '../models/Empleado/RegistrarEmpleado/RegistrarEmpleadoRequest';
+import { RegistrarEmpleadoReponse } from '../models/Empleado/RegistrarEmpleado/RegistrarEmpleadoResponse';
+import { EditarEmpleadoRequest } from '../models/Empleado/EditarEmpleado/EditarEmpleadoRequest';
+import { EditarEmpleadoResponse } from '../models/Empleado/EditarEmpleado/EditarEmpleadoResponse';
 
 @Injectable({
   providedIn: 'root'

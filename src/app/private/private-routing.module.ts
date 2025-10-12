@@ -5,6 +5,7 @@ import { RolComponent } from "./pages/rol/rol.component";
 import { authorizeGuard } from "../core/guards/authorize.guard";
 import { PersonalComponent } from "./pages/personal/personal.component";
 import { TipoProductoComponent } from "./pages/tipo-producto/tipo-producto.component";
+import { CategoriaComponent } from "./pages/categoria/categoria.component";
 
 
 const routes: Routes = [
@@ -24,11 +25,16 @@ const routes: Routes = [
                 component: PersonalComponent,
                 children: [
                 ]
-            }
-            ,
+            },
             {
                 path: "tipoproducto",
                 component: TipoProductoComponent,
+                children: [
+                ]
+            },
+            {
+                path: "categoria",
+                component: CategoriaComponent,
                 children: [
                 ]
             }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Api } from '../models/utils/Api';
-import { IniciarSesionRequest } from '../models/IniciarSesion/IniciarSesionRequest';
-import { IniciarSesionResponse } from '../models/IniciarSesion/IniciarSesionResponse';
+import { IniciarSesionRequest } from '../models/Autorizacion/IniciarSesion/IniciarSesionRequest';
+import { IniciarSesionResponse } from '../models/Autorizacion/IniciarSesion/IniciarSesionResponse';
 import { Observable } from 'rxjs';
 
 @Injectable({

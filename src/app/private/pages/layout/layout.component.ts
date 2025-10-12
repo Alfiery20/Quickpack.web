@@ -3,9 +3,9 @@ import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { AutorizacionService } from '../../../core/services/autorizacion.service';
 import { LocalStorageService } from '../../../core/services/local-storage.service';
-import { ObtenerMenuRequest } from '../../../core/models/ObtenerMenu/ObtenerMenuRequest';
-import { ObtenerMenuResponse } from '../../../core/models/ObtenerMenu/ObtenerMenuResponse';
-import { IniciarSesionResponse } from '../../../core/models/IniciarSesion/IniciarSesionResponse';
+import { ObtenerMenuRequest } from '../../../core/models/Autorizacion/ObtenerMenu/ObtenerMenuRequest';
+import { ObtenerMenuResponse } from '../../../core/models/Autorizacion/ObtenerMenu/ObtenerMenuResponse';
+import { IniciarSesionResponse } from '../../../core/models/Autorizacion/IniciarSesion/IniciarSesionResponse';
 
 @Component({
   selector: 'app-layout',
