@@ -9,6 +9,9 @@ import { EditarEstadoCategoriaResponse } from '../models/Categoria/EditarEstadoC
 import { ObtenerCategoriaRequest } from '../models/Categoria/ObtenerCategoria/ObtenerCategoriaRequest';
 import { ObtenerCategoriaResponse } from '../models/Categoria/ObtenerCategoria/ObtenerCategoriaResponse';
 import { VerCategoriaResponse } from '../models/Categoria/VerCategoria/VerCategoriaResponse';
+import { AgregarBeneficipRequest } from '../models/Categoria/AgregarBeneficio/AgregarBeneficipRequest';
+import { AgregarBeneficioResponse } from '../models/Categoria/AgregarBeneficio/AgregarBeneficioResponse';
+import { ObtenerBeneficio, ObtenerBeneficioResponse } from '../models/Categoria/ObtenerBeneficio/ObtenerBeneficioResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +41,15 @@ export class CategoriaService extends Api {
   EditarEstadoCategoria(idCategoria: number): Observable<EditarEstadoCategoriaResponse> {
     const uri = `${this.url}Categoria/editarEstadoCategoria/${idCategoria}`;
     return this.http.delete<EditarEstadoCategoriaResponse>(uri, { headers: this._headers });
+  }
+
+  RegistrarBeneficio(request: AgregarBeneficipRequest): Observable<AgregarBeneficioResponse> {
+    const uri = `${this.url}Categoria/agregarBeneficio`;
+    return this.http.post<AgregarBeneficioResponse>(uri, request, { headers: this._headers });
+  }
+
+  ObtenerBeneficio(idCategoria: number): Observable<ObtenerBeneficioResponse> {
+    const uri = `${this.url}Categoria/obtenerBeneficio/${idCategoria}`;
+    return this.http.get<ObtenerBeneficioResponse>(uri, { headers: this._headers });
   }
 }

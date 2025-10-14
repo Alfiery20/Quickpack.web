@@ -1,0 +1,89 @@
+<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black/75 z-50">
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 relative">
+
+        <!-- Botón cerrar -->
+        <button (click)="onClose()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 cursor-pointer">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+        <!-- Contenido del modal -->
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Agregar Beneficio</h2>
+
+        <form [formGroup]="formulario" class="space-y-4">
+            <div>
+                <label for="descripcion" class="block text-sm font-medium text-gray-700 mb-1">
+                    Descripción
+                </label>
+                <textarea formControlName="descripcion" id="descripcion" rows="4"
+                    placeholder="Escribe una descripción..."
+                    class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none"></textarea>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Input + Botón -->
+                <div class="flex gap-3 items-center">
+                    <div
+                        class="flex-1 flex items-center bg-white border border-gray-200 rounded-lg shadow-sm px-3 py-2 focus-within:ring-2 focus-within:ring-red-400">
+                        <i class="bi bi-card-text text-gray-400 mr-2" aria-hidden="true"></i>
+                        <input type="text" placeholder="Escribe un beneficio..." formControlName="nuevoBeneficio"
+                            (keydown.enter)="AgregarBeneficio(); $event.preventDefault()" aria-label="Nuevo beneficio"
+                            class="flex-1 bg-transparent text-gray-800 placeholder-gray-400 outline-none" />
+                    </div>
+
+                    <button type="button" (click)="AgregarBeneficio()"
+                        [disabled]="!formulario.get('nuevoBeneficio')?.value?.trim()"
+                        class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 disabled:bg-red-300 text-white font-medium px-4 py-2 rounded-md shadow-sm transition"
+                        aria-label="Agregar beneficio">
+                        <i class="bi bi-plus-lg" aria-hidden="true"></i>
+                        <span class="hidden sm:inline">Agregar</span>
+                    </button>
+                </div>
+
+                <!-- Lista -->
+                <div>
+                    <ul *ngIf="beneficios?.length; else emptyList" class="mt-2 space-y-2">
+                        <li *ngFor="let item of beneficios; let i = index"
+                            class="flex items-center justify-between p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-red-50 text-red-600 text-lg font-semibold">
+                                    <i class="bi bi-gift-fill" aria-hidden="true"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="text-sm font-medium text-gray-900 truncate">{{ item.nombre }}</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-center w-28 h-full">
+                                <button type="button" (click)="EliminarBeneficio(item)"
+                                    class="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded-lg shadow-md transition text-base"
+                                    title="Eliminar" aria-label="Eliminar beneficio">
+                                    <i class="bi bi-trash-fill text-xl" aria-hidden="true"></i>       
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ng-template #emptyList>
+                        <div
+                            class="mt-2 rounded-md border border-dashed border-gray-200 bg-gray-50 p-4 text-center text-sm text-gray-600">
+                            <i class="bi bi-info-circle-fill inline-block mr-2 text-gray-400" aria-hidden="true"></i>
+                            No hay beneficios agregados. Agrega uno usando el campo de arriba.
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+
+        <div class="mt-6 flex justify-end space-x-2">
+            <button (click)="onClose()"
+                class="px-4 py-2 rounded-lg bg-gray-300 text-gray-800 hover:bg-gray-400 transition">
+                Cancelar
+            </button>
+            <button (click)="onSave()" [disabled]="!ValidarFormulario()"
+                class="px-4 py-2 rounded-lg bg-red-700 text-white hover:bg-red-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                Guardar
+            </button>
+        </div>
+    </div>
+</div>

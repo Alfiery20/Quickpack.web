@@ -7,10 +7,11 @@ import { CategoriaService } from '../../../core/services/categoria.service';
 import { CommonModule } from '@angular/common';
 import { PaginacionComponent } from '../../../shared/paginacion/paginacion.component';
 import { AgregarEditarCategoriaComponent } from './agregar-editar-categoria/agregar-editar-categoria.component';
+import { AgregarEditarBeneficioComponent } from "./agregar-editar-beneficio/agregar-editar-beneficio.component";
 
 @Component({
   selector: 'app-categoria',
-  imports: [CommonModule, ReactiveFormsModule, PaginacionComponent, AgregarEditarCategoriaComponent],
+  imports: [CommonModule, ReactiveFormsModule, PaginacionComponent, AgregarEditarCategoriaComponent, AgregarEditarBeneficioComponent],
   templateUrl: './categoria.component.html',
   styleUrl: './categoria.component.scss'
 })
@@ -24,6 +25,7 @@ export class CategoriaComponent implements OnInit {
   idCategoriaSeleccionado: number = 0;
 
   modalAbiertoAgregarEditar = false;
+  modalAbiertoAgregarBeneficio = false;
 
   categorias: Categoria[] = [];
 
@@ -70,6 +72,17 @@ export class CategoriaComponent implements OnInit {
 
   cerrarModalAgregarEditar() {
     this.modalAbiertoAgregarEditar = false;
+    this.idCategoriaSeleccionado = 0;
+    this.ObtenerCategoria();
+  }
+
+  abrirModalAgregarBeneficio(id: number) {
+    this.modalAbiertoAgregarBeneficio = true;
+    this.idCategoriaSeleccionado = id;
+  }
+
+  cerrarModalAgregarBeneficio() {
+    this.modalAbiertoAgregarBeneficio = false;
     this.idCategoriaSeleccionado = 0;
     this.ObtenerCategoria();
   }

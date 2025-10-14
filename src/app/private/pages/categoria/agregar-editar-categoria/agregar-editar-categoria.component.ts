@@ -45,23 +45,24 @@ export class AgregarEditarCategoriaComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.formulario = this.fb.group({
-      nombre: [''],
-      descripcion: [''],
-      idTipoProducto: [0]
-    });
+    if (this.isOpen) {
+      this.formulario = this.fb.group({
+        nombre: [''],
+        descripcion: [''],
+        idTipoProducto: [0]
+      });
 
-    if (this.idCategoria != 0) {
-      this.titulo = 'Editar';
-      this.categoriaService.VerCategoria(this.idCategoria).subscribe(
-        (response) => {
-          this.categoriaSeleccionada = response;
-          this.formulario = this.fb.group({
-            nombre: [this.categoriaSeleccionada.nombre],
-            descripcion: [this.categoriaSeleccionada.descripcion],
-            idTipoProducto: [this.categoriaSeleccionada.idTipoProducto]
+      if (this.idCategoria != 0) {
+        this.categoriaService.VerCategoria(this.idCategoria).subscribe(
+          (response) => {
+            this.categoriaSeleccionada = response;
+            this.formulario = this.fb.group({
+              nombre: [this.categoriaSeleccionada.nombre],
+              descripcion: [this.categoriaSeleccionada.descripcion],
+              idTipoProducto: [this.categoriaSeleccionada.idTipoProducto]
+            });
           });
-        });
+      }
     }
   }
 
