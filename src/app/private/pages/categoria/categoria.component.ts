@@ -8,10 +8,11 @@ import { CommonModule } from '@angular/common';
 import { PaginacionComponent } from '../../../shared/paginacion/paginacion.component';
 import { AgregarEditarCategoriaComponent } from './agregar-editar-categoria/agregar-editar-categoria.component';
 import { AgregarEditarBeneficioComponent } from "./agregar-editar-beneficio/agregar-editar-beneficio.component";
+import { AgregarEditarCaracteristicaComponent } from "./agregar-editar-caracteristica/agregar-editar-caracteristica.component";
 
 @Component({
   selector: 'app-categoria',
-  imports: [CommonModule, ReactiveFormsModule, PaginacionComponent, AgregarEditarCategoriaComponent, AgregarEditarBeneficioComponent],
+  imports: [CommonModule, ReactiveFormsModule, PaginacionComponent, AgregarEditarCategoriaComponent, AgregarEditarBeneficioComponent, AgregarEditarCaracteristicaComponent],
   templateUrl: './categoria.component.html',
   styleUrl: './categoria.component.scss'
 })
@@ -26,6 +27,7 @@ export class CategoriaComponent implements OnInit {
 
   modalAbiertoAgregarEditar = false;
   modalAbiertoAgregarBeneficio = false;
+  modalAbiertoAgregarCaracteristica = false;
 
   categorias: Categoria[] = [];
 
@@ -83,6 +85,17 @@ export class CategoriaComponent implements OnInit {
 
   cerrarModalAgregarBeneficio() {
     this.modalAbiertoAgregarBeneficio = false;
+    this.idCategoriaSeleccionado = 0;
+    this.ObtenerCategoria();
+  }
+
+  abrirModalAgregarCaracteristica(id: number) {
+    this.modalAbiertoAgregarCaracteristica = true;
+    this.idCategoriaSeleccionado = id;
+  }
+
+  cerrarModalAgregarCaracteristica() {
+    this.modalAbiertoAgregarCaracteristica = false;
     this.idCategoriaSeleccionado = 0;
     this.ObtenerCategoria();
   }

@@ -39,7 +39,7 @@ export class AgregarEditarBeneficioComponent implements OnChanges, OnInit {
       if (this.idCategoria != 0) {
         this.categoriaService.ObtenerBeneficio(this.idCategoria).subscribe(
           (response) => {
-            this.formulario.get('descripcion')?.setValue(response.descripcion);
+            this.formulario.get('descripcion')?.setValue(response.descripcion || '');
             this.beneficios = response.beneficios
           }
         )

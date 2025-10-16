@@ -15,5 +15,38 @@ export class constants {
                 return 'Otro';
         }
     }
+
+    encryptToBase64(file: File): Promise<string> {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                const base64 = reader.result as string;
+                resolve(base64);
+            };
+
+            reader.onerror = (error) => reject(error);
+
+            reader.readAsDataURL(file);
+        });
+    }
+
+    decryptBase64(base64String: string): Blob {
+        const base64Data = base64String.split(',')[1];
+        const contentTypeMatch = base64String.match(/data:(.*?);base64,/);
+        const contentType = contentTypeMatch ? contentTypeMatch[1] : 'application/octet-stream';
+
+        const byteCharacters = atob(base64Data);
+        const byteNumbers = new Array(byteCharacters.length);
+
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNumbers);
+        return new Blob([byteArray], { type: contentType });
+    }
+
+
 }
 
