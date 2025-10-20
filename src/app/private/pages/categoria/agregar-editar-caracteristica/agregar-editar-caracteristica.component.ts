@@ -29,6 +29,8 @@ export class AgregarEditarCaracteristicaComponent implements OnChanges, OnInit {
 
   caracteristicas: ObtenerCaracteristicaResponse[] = []
 
+  carateristicaSeleccionada: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private categoriaService: CategoriaService
@@ -145,7 +147,7 @@ export class AgregarEditarCaracteristicaComponent implements OnChanges, OnInit {
     var descripcion: string = this.formulario.value.descripcion
     var archivo: number = this.formulario.value.archivo
 
-    return (nombre.length > 0) && (descripcion.length > 0) && (archivo)
+    return ((nombre.length > 0) && (descripcion.length > 0) && (archivo)) && (!this.carateristicaSeleccionada)
   }
 
   onSeleccionarArchivo(event: any) {
@@ -160,8 +162,39 @@ export class AgregarEditarCaracteristicaComponent implements OnChanges, OnInit {
         this.isImage = file.type.startsWith('image/');
         this.isVideo = file.type.startsWith('video/');
       };
-
       reader.readAsDataURL(file);
     }
   }
+
+  onSeleccionarCaracteristica(idCaracteristica: number, checked: boolean) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox: any) => {
+      if (parseInt(checkbox.value) !== idCaracteristica) {
+        checkbox.checked = false;
+      }
+    });
+
+    if (!checked) {
+      this.ResetearFormulario();
+      return;
+    }
+
+    this.categoriaService.VerCaracteristica(idCaracteristica).subscribe(
+      (response) => {
+        this.formulario.patchValue({
+          nombre: response.nombre,
+          descripcion: response.descripcion
+        });
+
+        this.previewUrl = response.multimedia ?? null;
+
+        const fileType = response.multimedia ? response.multimedia.split(';')[0] : '';
+        this.isImage = fileType.startsWith('data:image/');
+        this.isVideo = fileType.startsWith('data:video/');
+
+        this.archivoSeleccionado = {} as File;
+      }
+    );
+  }
+
 }

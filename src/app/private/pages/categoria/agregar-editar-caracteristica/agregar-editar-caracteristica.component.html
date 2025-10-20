@@ -50,8 +50,13 @@
                         <div
                             class="w-10 h-10 flex items-center justify-center rounded-full bg-red-50 text-red-600 text-lg font-semibold">
                             <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="radio" value="{{ item.id }}" name="caract"
-                                    class="text-red-600 focus:ring-red-500 border-gray-300" />
+                                <input
+                                    type="checkbox"
+                                    [value]="item.id"
+                                    name="caract"
+                                    class="text-red-600 focus:ring-red-500 border-gray-300"
+                                    (change)="onSeleccionarCaracteristica(item.id, !!($any($event.target).checked))"
+                                />
                             </label>
                         </div>
                         <div class="min-w-0">
