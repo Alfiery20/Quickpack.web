@@ -6,6 +6,7 @@ import { authorizeGuard } from "../core/guards/authorize.guard";
 import { PersonalComponent } from "./pages/personal/personal.component";
 import { TipoProductoComponent } from "./pages/tipo-producto/tipo-producto.component";
 import { CategoriaComponent } from "./pages/categoria/categoria.component";
+import { ProductoComponent } from "./pages/producto/producto.component";
 
 
 const routes: Routes = [
@@ -35,6 +36,12 @@ const routes: Routes = [
             {
                 path: "categoria",
                 component: CategoriaComponent,
+                children: [
+                ]
+            },
+            {
+                path: "producto",
+                component: ProductoComponent,
                 children: [
                 ]
             }

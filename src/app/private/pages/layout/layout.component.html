@@ -1,24 +1,22 @@
-<div class="flex min-h-screen bg-gray-100">
+<div class="flex flex-col sm:flex-row min-h-screen bg-gray-100">
     <!-- SIDEBAR -->
-    <aside class="bg-gray-800 text-white transition-all duration-300 overflow-hidden"
+    <aside
+        class="bg-gray-800 text-white transition-all duration-300 overflow-hidden fixed sm:static top-0 left-0 h-screen z-40"
         [ngClass]="{ 'w-64': sidebarOpen, 'w-0': !sidebarOpen }">
         <div class="p-4" *ngIf="sidebarOpen">
             <h2 class="text-xl font-bold mb-4">Menú</h2>
             <nav class="flex flex-col space-y-2">
                 @for (item of this.menus; track $index) {
                 <div>
-                    <!-- Botón del menú padre -->
                     <button (click)="toggleMenu(item)"
                         class="flex items-center justify-between w-full hover:bg-gray-700 p-2 rounded text-left">
                         <div class="flex items-center space-x-2">
                             <i class="bi {{item.icono}} text-white"></i>
                             <span>{{item.nombre}}</span>
                         </div>
-                        <!-- Icono flecha -->
                         <i class="bi" [ngClass]="item.isOpen ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                     </button>
 
-                    <!-- Submenú desplegable -->
                     <div class="flex flex-col pl-6 overflow-hidden transition-all duration-300 ease-in-out"
                         [ngClass]="item.isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'">
                         @for (menuHijo of item.menuHijo; track $index) {
@@ -32,38 +30,28 @@
                 </div>
                 }
             </nav>
-
         </div>
     </aside>
 
-    <!-- CONTENEDOR PRINCIPAL -->
-    <div class="flex flex-col flex-1">
-        <!-- NAVBAR -->
-        <!-- NAVBAR -->
-        <header class="flex items-center justify-between bg-red-700 text-white p-4 shadow-md">
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="flex flex-col flex-1 min-h-screen sm:ml-0">
+        <header class="flex items-center justify-between bg-red-700 text-white p-4 shadow-md sm:sticky sm:top-0 z-30">
             <button (click)="toggleSidebar()" aria-label="Abrir menú"
                 class="text-2xl focus:outline-none cursor-pointer">
                 ☰
             </button>
 
-            <!-- Contenedor del botón + popup -->
             <div class="relative">
-                <!-- Botón del usuario -->
                 <button (click)="togglePopup()" class="flex items-center space-x-2 focus:outline-none">
                     <i class="text-2xl bi bi-person-circle"></i>
                 </button>
 
-                <!-- POPUP flotante debajo del botón -->
                 <div *ngIf="popupOpen"
                     class="absolute right-0 mt-2 w-72 bg-white text-gray-800 rounded-xl shadow-lg p-6 z-50 border border-gray-200 flex flex-col items-center">
-
-                    <!-- Ícono de usuario -->
                     <div
                         class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white text-2xl shadow-md">
                         <i class="bi bi-person"></i>
                     </div>
-
-                    <!-- Información del usuario -->
                     <div class="mt-4 text-center">
                         <p class="text-lg font-semibold">
                             {{this.userLogin.nombre}} {{this.userLogin.apellidoPaterno}}
@@ -73,8 +61,6 @@
                             {{this.userLogin.rol}}
                         </p>
                     </div>
-
-                    <!-- Botón de acción -->
                     <div class="mt-6 w-full">
                         <button (click)="cerrarSesion()"
                             class="w-full px-4 py-2 text-sm rounded-lg bg-red-600 text-white hover:bg-red-700 transition">
@@ -82,14 +68,11 @@
                         </button>
                     </div>
                 </div>
-
             </div>
         </header>
 
-
-        <!-- CONTENIDO -->
-        <main class="flex-1 p-6">
-            <router-outlet> </router-outlet>
+        <main class="flex-1 p-4 sm:p-6 overflow-auto">
+            <router-outlet></router-outlet>
         </main>
     </div>
 </div>

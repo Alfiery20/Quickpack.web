@@ -17,6 +17,7 @@ import { AgregarCaracteristicaResponse } from '../models/Categoria/AgregarCaract
 import { ObtenerCaracteristicaResponse } from '../models/Categoria/ObtenerCaracteristica/ObtenerCaracteristicaResponse';
 import { VerCaracteristicaResponse } from '../models/Categoria/VerCaracteristica/VerCaracteristicaResponse';
 import { EliminarCaracteristicaResponse } from '../models/Categoria/EliminarCaracteristica/EliminarCaracteristicaResponse';
+import { ObtenerCategoriaMenuResponse } from '../models/Categoria/ObtenerCategoriaMenu/ObtenerCategoriaMenuResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -76,5 +77,10 @@ export class CategoriaService extends Api {
   EliminarCaracteristica(idCaracteristica: number): Observable<EliminarCaracteristicaResponse> {
     const uri = `${this.url}Categoria/eliminarCaracteristica/${idCaracteristica}`;
     return this.http.delete<EliminarCaracteristicaResponse>(uri, { headers: this._headers });
+  }
+
+  ObtenerCategoriaMenu(): Observable<Array<ObtenerCategoriaMenuResponse>> {
+    const uri = `${this.url}Categoria/obtenerCategoriaMenu`;
+    return this.http.get<Array<ObtenerCategoriaMenuResponse>>(uri, { headers: this._headers });
   }
 }
