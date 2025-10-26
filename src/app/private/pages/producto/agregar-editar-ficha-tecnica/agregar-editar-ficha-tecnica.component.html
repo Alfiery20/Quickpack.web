@@ -1,1 +1,172 @@
-<p>agregar-editar-ficha-tecnica works!</p>
+<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black/75 z-50">
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 relative max-h-[80vh]">
+        <button (click)="onClose()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 cursor-pointer">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">{{this.titulo}} Ficha Tecnica</h2>
+
+
+        <div class="overflow-y-auto max-h-[60vh]">
+            <form [formGroup]="formulario" class="space-y-4">
+                <div class="items-center justify-between ">
+                    <label for="tamanyo" class="text-sm font-medium text-gray-700">
+                        Dimension Camara (mm)
+                    </label>
+                    <div class="flex items-center space-x-2 border border-gray-300 rounded-lg" role="group">
+                        <input formControlName="largoCamara" placeholder="Largo"
+                            class="w-[33%] px-3 py-2 text-sm font-medium rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="number" step="0.01" />
+                        <i class="bi bi-x-lg text-gray-500"></i>
+
+                        <input formControlName="anchoCamara" placeholder="Ancho"
+                            class="w-[33%] px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="number" step="0.01" />
+                        <i class="bi bi-x-lg text-gray-500"></i>
+
+                        <input formControlName="altoCamara" placeholder="Alto"
+                            class="w-[33%] px-3 py-2 text-sm font-medium rounded-r-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="number" step="0.01" />
+                    </div>
+                </div>
+                <div class="items-center justify-between">
+                    <label for="maquina" class="text-sm font-medium text-gray-700">
+                        Dimension Maquina (mm)
+                    </label>
+                    <div class="flex items-center space-x-2 border border-gray-300 rounded-lg" role="group">
+                        <input formControlName="largoMaquina" placeholder="Largo"
+                            class="w-[33%] px-3 py-2 text-sm font-medium rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="number" step="0.01" />
+                        <i class="bi bi-x-lg text-gray-500"></i>
+
+                        <input formControlName="anchoMaquina" placeholder="Ancho"
+                            class="w-[33%] px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="number" step="0.01" />
+                        <i class="bi bi-x-lg text-gray-500"></i>
+
+                        <input formControlName="altoMaquina" placeholder="Alto"
+                            class="w-[33%] px-3 py-2 text-sm font-medium rounded-r-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="number" step="0.01" />
+                    </div>
+                </div>
+                <!-- <div class="items-center justify-between">
+                    <label for="maquina" class="text-sm font-medium text-gray-700">
+                        Limite de Ciclo (segundos)
+                    </label>
+                    <div class="flex items-center space-x-2 border border-gray-300 rounded-lg" role="group">
+                        <input controlname="limiteInferior" placeholder="Inferior"
+                            class="w-[50%] px-3 py-2 text-sm font-medium rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="text" />
+                        <i class="bi bi-x-lg text-gray-500"></i>
+
+                        <input controlname="limiteSuperior" placeholder="Superior"
+                            class="w-[50%] px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="text" />
+                    </div>
+                </div> -->
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Barra de Sellado (mm)
+                    </label>
+                    <input formControlName="barraSellado" type="number" step="0.01" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Capacidad Bomba (mm)
+                    </label>
+                    <input formControlName="capacidadBomba" type="number" step="0.01" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Ciclo (Segundos)
+                    </label>
+                    <div class="flex items-center space-x-2 border border-gray-300 rounded-lg" role="group">
+                        <input formControlName="cicloInferior" placeholder="Inferior"
+                            class="w-[50%] px-3 py-2 text-sm font-medium rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="number" />
+                        <i class="bi bi-x-lg text-gray-500"></i>
+
+                        <input formControlName="cicloSuperior" placeholder="Superior"
+                            class="w-[50%] px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-400"
+                            type="number" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Peso (Kg)
+                    </label>
+                    <input formControlName="peso" type="number" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Potencia (Kw)
+                    </label>
+                    <input formControlName="potencia" type="number" step="0.01" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Placa de Insercion
+                    </label>
+                    <input formControlName="placaInsercion" type="number" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Sistema de Control
+                    </label>
+                    <input formControlName="sistemaControl" type="text" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Deteccion de Vacio Final
+                    </label>
+                    <input formControlName="deteccionVacio" type="text" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Deteccion de Carne
+                    </label>
+                    <input formControlName="deteccionCarne" type="text" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        SoftAir
+                    </label>
+                    <input formControlName="softair" type="text" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+                <div>
+                    <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+                        Control de Liquidos
+                    </label>
+                    <input formControlName="controlLiquidos" type="text" placeholder="Escribe un nombre..."
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-400 focus:outline-none" />
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-6 flex justify-end space-x-2">
+            <button (click)="onClose()"
+                class="px-4 py-2 rounded-lg bg-gray-300 text-gray-800 hover:bg-gray-400 transition">
+                Cancelar
+            </button>
+            <button (click)="OnSave()" [disabled]="false"
+                class="px-4 py-2 rounded-lg bg-red-700 text-white hover:bg-red-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                Guardar
+            </button>
+        </div>
+    </div>
+</div>

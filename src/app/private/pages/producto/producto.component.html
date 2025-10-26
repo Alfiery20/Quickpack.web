@@ -90,14 +90,15 @@
                                 class="px-3 py-2 text-sm font-medium text-white bg-red-600 rounded-l-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
-                            <button type="button" (click)="(producto.id)"
+                            <button type="button" (click)="abrirModalAgregarEditarFichaTecnica(producto.id)"
                                 class="px-3 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
                                 <i class="bi bi-menu-app"></i>
                             </button>
                             <button type="button" (click)="CambiarEstado(producto.id)" [ngClass]="{
                                     'bg-green-600 hover:bg-green-700 focus:ring-green-400': producto.estado === 'INACTIVO',
                                     'bg-red-600 hover:bg-red-700 focus:ring-red-400': producto.estado === 'ACTIVO'
-                                    }" class="px-3 py-2 text-sm font-medium text-white rounded-r-lg focus:outline-none focus:ring-2">
+                                    }"
+                                class="px-3 py-2 text-sm font-medium text-white rounded-r-lg focus:outline-none focus:ring-2">
                                 <i *ngIf="producto.estado === 'ACTIVO'; else reciclar" class="bi bi-trash"></i>
                                 <ng-template #reciclar>
                                     <i class="bi bi-arrow-clockwise"></i>
@@ -117,4 +118,8 @@
     <app-agregar-editar-producto [isOpen]="modalAbiertoAgregarEditar" (close)="cerrarModalAgregarEditar()"
         [idProducto]="idProductoSeleccionado">
     </app-agregar-editar-producto>
+
+    <app-agregar-editar-ficha-tecnica [isOpen]="modalAbiertoAgregarEditarFichaTecnica"
+        (close)="cerrarModalAgregarEditarFichaTecnica()"
+        [idProducto]="idProductoSeleccionado"></app-agregar-editar-ficha-tecnica>
 </div>

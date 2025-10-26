@@ -1,20 +1,21 @@
-<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black/75 z-50">
-    <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 relative">
+<div *ngIf="isOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4">
+    <div
+        class="bg-white rounded-xl shadow-lg w-full max-w-sm md:max-w-lg p-4 md:p-6 relative overflow-y-auto max-h-[90vh]">
 
         <!-- Botón cerrar -->
-        <button (click)="onClose()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 cursor-pointer">
+        <button (click)="onClose()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 transition">
             <i class="bi bi-x-lg"></i>
         </button>
 
-        <!-- Contenido del modal -->
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">{{this.titulo}} Empleado</h2>
+        <!-- Título -->
+        <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4">{{ titulo }} Empleado</h2>
 
-        <form [formGroup]="formulario">
+        <!-- Formulario -->
+        <form [formGroup]="formulario" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
                 <label for="tipoDocumento" class="block text-sm font-medium text-gray-900">Tipo Documento</label>
-                <select [disabled]="this.idEmpledo != 0" id="tipoDocumento" name="tipoDocumento"
-                    formControlName="tipoDocumento"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm">
+                <select [disabled]="idEmpledo != 0" id="tipoDocumento" formControlName="tipoDocumento"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50">
                     <option value="0" disabled selected>Seleccione</option>
                     <option value="1">DNI</option>
                     <option value="2">Carnet de Extranjeria</option>
@@ -26,66 +27,64 @@
 
             <div>
                 <label for="nroDocumento" class="block text-sm font-medium text-gray-900">Nro. Documento</label>
-                <input [disabled]="this.idEmpledo != 0" id="nroDocumento" type="text" name="nroDocumento"
-                    autocomplete="given-name" formControlName="nroDocumento"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
+                <input [disabled]="idEmpledo != 0" id="nroDocumento" type="text" formControlName="nroDocumento"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50" />
             </div>
 
             <div>
                 <label for="nombre" class="block text-sm font-medium text-gray-900">Nombre</label>
-                <input id="nombre" type="text" name="nombre" autocomplete="given-name" formControlName="nombre"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
+                <input id="nombre" type="text" formControlName="nombre"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50" />
             </div>
 
             <div>
                 <label for="apellidoPaterno" class="block text-sm font-medium text-gray-900">Apellido Paterno</label>
-                <input id="apellidoPaterno" type="text" name="apellidoPaterno" autocomplete="given-name"
-                    formControlName="apellidoPaterno"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
+                <input id="apellidoPaterno" type="text" formControlName="apellidoPaterno"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50" />
             </div>
 
             <div>
                 <label for="apellidoMaterno" class="block text-sm font-medium text-gray-900">Apellido Materno</label>
-                <input id="apellidoMaterno" type="text" name="apellidoMaterno" autocomplete="given-name"
-                    formControlName="apellidoMaterno"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
+                <input id="apellidoMaterno" type="text" formControlName="apellidoMaterno"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50" />
             </div>
 
             <div>
-                <label for="telefono" class="block text-sm font-medium text-gray-900">Telefono</label>
-                <input id="telefono" type="text" name="telefono" autocomplete="given-name" formControlName="telefono"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
+                <label for="telefono" class="block text-sm font-medium text-gray-900">Teléfono</label>
+                <input id="telefono" type="text" formControlName="telefono"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50" />
             </div>
 
-            <div>
+            <div class="sm:col-span-2">
                 <label for="correo" class="block text-sm font-medium text-gray-900">Correo</label>
-                <input id="correo" type="text" name="correo" autocomplete="given-name" formControlName="correo"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
+                <input id="correo" type="text" formControlName="correo"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50" />
             </div>
 
-            <div *ngIf="this.idEmpledo == 0">
+            <div *ngIf="idEmpledo == 0" class="sm:col-span-2">
                 <label for="clave" class="block text-sm font-medium text-gray-900">Clave</label>
-                <input id="clave" type="password" name="Correo" autocomplete="given-name" formControlName="clave"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm" />
+                <input id="clave" type="password" formControlName="clave"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50" />
             </div>
 
-            <div>
+            <div class="sm:col-span-2">
                 <label for="rol" class="block text-sm font-medium text-gray-900">Rol</label>
-                <select id="rol" name="rol" formControlName="rol"
-                    class="block w-full rounded-md px-3 py-2 text-base text-gray-900 placeholder:text-gray-400 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50 sm:text-sm">
+                <select id="rol" formControlName="rol"
+                    class="block w-full rounded-md px-3 py-2 text-sm text-gray-900 border border-gray-300 focus:border-red-400 focus:ring focus:ring-red-300 focus:ring-opacity-50">
                     <option value="0" disabled selected>Seleccione</option>
-                    <option *ngFor="let item of rolMenu" value="{{item.id}}">{{item.nombre}}</option>
+                    <option *ngFor="let item of rolMenu" [value]="item.id">{{ item.nombre }}</option>
                 </select>
             </div>
         </form>
 
-        <div class="mt-6 flex justify-end space-x-2">
+        <!-- Botones -->
+        <div class="mt-6 flex flex-col sm:flex-row justify-end gap-2">
             <button (click)="onClose()"
-                class="px-4 py-2 rounded-lg bg-gray-300 text-gray-800 hover:bg-gray-400 transition">
+                class="w-full sm:w-auto px-4 py-2 rounded-lg bg-gray-300 text-gray-800 hover:bg-gray-400 transition text-sm">
                 Cancelar
             </button>
             <button (click)="onSave()" [disabled]="!ValidarFormulario()"
-                class="px-4 py-2 rounded-lg bg-red-700 text-white hover:bg-red-600 transition">
+                class="w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white hover:bg-red-600 transition text-sm disabled:opacity-50 disabled:cursor-not-allowed">
                 Guardar
             </button>
         </div>

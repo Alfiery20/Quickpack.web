@@ -1,27 +1,34 @@
-<div class="flex flex-col sm:flex-row min-h-screen bg-gray-100">
+<div class="flex flex-col md:flex-row min-h-screen bg-gray-100">
+    <!-- OVERLAY (solo en móvil cuando se abre el sidebar) -->
+    <div *ngIf="sidebarOpen" class="md:hidden fixed inset-0 bg-black z-30 opacity-75" (click)="toggleSidebar()">
+    </div>
+
     <!-- SIDEBAR -->
     <aside
-        class="bg-gray-800 text-white transition-all duration-300 overflow-hidden fixed sm:static top-0 left-0 h-screen z-40"
+        class="bg-gray-800 text-white transition-all duration-300 overflow-hidden fixed md:static top-0 left-0 h-screen z-40"
         [ngClass]="{ 'w-64': sidebarOpen, 'w-0': !sidebarOpen }">
-        <div class="p-4" *ngIf="sidebarOpen">
-            <h2 class="text-xl font-bold mb-4">Menú</h2>
-            <nav class="flex flex-col space-y-2">
+        <div class="p-4 h-full flex flex-col" *ngIf="sidebarOpen">
+            <div class="mb-4 flex items-center justify-between">
+                <h2 class="text-xl font-bold">Menú</h2>
+            </div>
+
+            <nav class="flex-1 flex flex-col space-y-2 overflow-auto pr-2">
                 @for (item of this.menus; track $index) {
-                <div>
+                <div class="group">
                     <button (click)="toggleMenu(item)"
-                        class="flex items-center justify-between w-full hover:bg-gray-700 p-2 rounded text-left">
+                        class="flex items-center justify-between w-full hover:bg-gray-700 p-2 rounded text-left transition-colors">
                         <div class="flex items-center space-x-2">
-                            <i class="bi {{item.icono}} text-white"></i>
-                            <span>{{item.nombre}}</span>
+                            <i class="bi {{item.icono}} text-white text-lg"></i>
+                            <span class="font-medium">{{item.nombre}}</span>
                         </div>
                         <i class="bi" [ngClass]="item.isOpen ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
                     </button>
 
                     <div class="flex flex-col pl-6 overflow-hidden transition-all duration-300 ease-in-out"
-                        [ngClass]="item.isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'">
+                        [ngClass]="item.isOpen ? 'max-h-40 opacity-100 mt-2' : 'max-h-0 opacity-0'">
                         @for (menuHijo of item.menuHijo; track $index) {
                         <a [routerLink]="menuHijo.ruta"
-                            class="hover:bg-gray-600 p-2 rounded flex items-center space-x-2">
+                            class="hover:bg-gray-700 p-2 rounded flex items-center space-x-2 transition-colors">
                             <i class="bi {{menuHijo.icono}} text-white"></i>
                             <span>{{menuHijo.nombre}}</span>
                         </a>
@@ -30,14 +37,20 @@
                 </div>
                 }
             </nav>
+
+            <div class="mt-4">
+                <!-- Footer pequeño del sidebar -->
+                <div class="text-sm text-gray-300">Versión • QuickPack</div>
+            </div>
         </div>
     </aside>
 
     <!-- CONTENIDO PRINCIPAL -->
     <div class="flex flex-col flex-1 min-h-screen sm:ml-0">
         <header class="flex items-center justify-between bg-red-700 text-white p-4 shadow-md sm:sticky sm:top-0 z-30">
+            <!-- Botón burger: se desplaza cuando sidebarOpen es true -->
             <button (click)="toggleSidebar()" aria-label="Abrir menú"
-                class="text-2xl focus:outline-none cursor-pointer">
+                class="text-2xl focus:outline-none cursor-pointer transition-transform duration-300">
                 ☰
             </button>
 

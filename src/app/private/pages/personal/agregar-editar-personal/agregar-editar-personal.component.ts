@@ -38,41 +38,50 @@ export class AgregarEditarPersonalComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.formulario = this.fb.group({
-      tipoDocumento: ['0'],
-      nroDocumento: [''],
-      nombre: [''],
-      apellidoPaterno: [''],
-      apellidoMaterno: [''],
-      telefono: [''],
-      correo: [''],
-      clave: [''],
-      rol: ['0']
-    });
+
+    if (!this.isOpen) {
+      return;
+    } else {
+      this.formulario = this.fb.group({
+        tipoDocumento: ['0'],
+        nroDocumento: [''],
+        nombre: [''],
+        apellidoPaterno: [''],
+        apellidoMaterno: [''],
+        telefono: [''],
+        correo: [''],
+        clave: [''],
+        rol: ['']
+      });
+    }
 
     this.rolService.ObtenerRolMenu().subscribe(
       (response) => {
         this.rolMenu = response;
-      });
+        if (this.idEmpledo != 0) {
+          this.titulo = 'Editar';
+          this.empleadoService.VerEmpleado(this.idEmpledo).subscribe(
+            (response) => {
+              this.personalSeleccionado = response;
+              console.log(this.personalSeleccionado);
+              console.log(this.formulario.value);
 
-    if (this.idEmpledo != 0) {
-      this.titulo = 'Editar';
-      this.empleadoService.VerEmpleado(this.idEmpledo).subscribe(
-        (response) => {
-          this.personalSeleccionado = response;
-          this.formulario = this.fb.group({
-            tipoDocumento: [{ value: this.personalSeleccionado.tipoDocumento, disabled: true }],
-            nroDocumento: [{ value: this.personalSeleccionado.numeroDocumento, disabled: true }],
-            nombre: [this.personalSeleccionado.nombre],
-            apellidoPaterno: [this.personalSeleccionado.apellidoPaterno],
-            apellidoMaterno: [this.personalSeleccionado.apellidoMaterno],
-            telefono: [this.personalSeleccionado.telefono],
-            correo: [this.personalSeleccionado.correo],
-            Clave: [{ value: '', disabled: true }],
-            rol: [this.personalSeleccionado.rol]
-          });
-        });
-    }
+
+              this.formulario = this.fb.group({
+                tipoDocumento: [{ value: this.personalSeleccionado.tipoDocumento, disabled: true }],
+                nroDocumento: [{ value: this.personalSeleccionado.numeroDocumento, disabled: true }],
+                nombre: [this.personalSeleccionado.nombre],
+                apellidoPaterno: [this.personalSeleccionado.apellidoPaterno],
+                apellidoMaterno: [this.personalSeleccionado.apellidoMaterno],
+                telefono: [this.personalSeleccionado.telefono],
+                correo: [this.personalSeleccionado.correo],
+                Clave: [{ value: '', disabled: true }],
+                rol: [this.personalSeleccionado.rol]
+              });
+              console.log(this.formulario.value);
+            });
+        }
+      });
   }
 
   onClose() {
@@ -152,20 +161,24 @@ export class AgregarEditarPersonalComponent implements OnChanges, OnInit {
   }
 
   ValidarFormulario() {
-    var tipoDocumento: string = this.formulario.value.tipoDocumento
-    var nroDocumento: string = this.formulario.value.nroDocumento
+    var tipoDocumento: string = this.formulario.getRawValue().tipoDocumento
+    var nroDocumento: string = this.formulario.getRawValue().nroDocumento
     var nombre: string = this.formulario.value.nombre
     var apellidoPaterno: string = this.formulario.value.apellidoPaterno
     var apellidoMaterno: string = this.formulario.value.apellidoMaterno
     var telefono: string = this.formulario.value.telefono
     var correo: string = this.formulario.value.correo
-    var clave: string = this.formulario.value.clave
+    var clave: string = this.idEmpledo != 0 ? "" : this.formulario.getRawValue().clave;
     var rol: number = this.formulario.value.rol
 
-    return (tipoDocumento.length > 0) && (nroDocumento.length > 0) &&
+    console.log(nroDocumento);
+
+
+    return (tipoDocumento != "0") && (nroDocumento.length > 0) &&
       (nombre.length > 0) && (apellidoPaterno.length > 0) &&
       (apellidoMaterno.length > 0) && (telefono.length > 0) &&
-      (correo.length > 0) && (clave.length > 0) &&
+      (correo.length > 0) && (this.idEmpledo != 0 || clave.length > 0) &&
       (rol > 0)
   }
+
 }

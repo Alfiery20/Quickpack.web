@@ -9,6 +9,11 @@ import { ObtenerProductoRequest } from '../models/Producto/ObtenerProducto/Obten
 import { ObtenerProductoResponse } from '../models/Producto/ObtenerProducto/ObtenerProductoResponse';
 import { VerProductoResponse } from '../models/Producto/VerProducto/VerProductoResponse';
 import { Api } from '../models/utils/Api';
+import { AgregarFichaTecnicaRequest } from '../models/Producto/AgregarFichaTecnica/AgregarFichaTecnicaRequest';
+import { AgregarFichaTecnicaResponse } from '../models/Producto/AgregarFichaTecnica/AgregarFichaTecnicaResponse';
+import { EditarFichaTecnicaRequest } from '../models/Producto/EditarFichaTecnica/EditarFichaTecnicaRequest';
+import { EditarFichaTecnicaResponse } from '../models/Producto/EditarFichaTecnica/EditarFichaTecnicaResponse';
+import { VerFichaTecnicaResponse } from '../models/Producto/VerFichaTecnica/VerFichaTecnicaResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +43,20 @@ export class ProductoService extends Api {
   EditarEstadoProducto(idProducto: number): Observable<EditarEstadoProductoResponse> {
     const uri = `${this.url}Producto/editarEstadoProducto/${idProducto}`;
     return this.http.delete<EditarEstadoProductoResponse>(uri, { headers: this._headers });
+  }
+
+  RegistrarFichaTecnica(request: AgregarFichaTecnicaRequest): Observable<AgregarFichaTecnicaResponse> {
+    const uri = `${this.url}Producto/agregarFichaTecnica`;
+    return this.http.post<AgregarFichaTecnicaResponse>(uri, request, { headers: this._headers });
+  }
+
+  EditarFichaTecnica(request: EditarFichaTecnicaRequest): Observable<EditarFichaTecnicaResponse> {
+    const uri = `${this.url}Producto/editarFichaTecnica`;
+    return this.http.put<EditarFichaTecnicaResponse>(uri, request, { headers: this._headers });
+  }
+
+  VerFichaTecnica(idProducto: number): Observable<VerFichaTecnicaResponse> {
+    const uri = `${this.url}Producto/verFichaTecnica/${idProducto}`;
+    return this.http.get<VerFichaTecnicaResponse>(uri, { headers: this._headers });
   }
 }

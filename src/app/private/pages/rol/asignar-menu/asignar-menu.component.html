@@ -1,45 +1,46 @@
-<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black/75 z-50">
-    <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 relative">
+<div *ngIf="isOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4">
+    <div
+        class="bg-white rounded-xl shadow-lg w-full max-w-sm md:max-w-lg p-4 md:p-6 relative overflow-y-auto max-h-[90vh]">
 
         <!-- Botón cerrar -->
-        <button (click)="onClose()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 cursor-pointer">
+        <button (click)="onClose()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 transition">
             <i class="bi bi-x-lg"></i>
         </button>
 
-        <!-- Contenido del modal -->
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Asignar Menu a Rol</h2>
+        <!-- Título -->
+        <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
+            Asignar Menú a Rol
+        </h2>
 
-        <div class="max-w-md mx-auto bg-white rounded-lg shadow p-4">
-            <ul class="space-y-2">
+        <!-- Lista de permisos -->
+        <div class="bg-white rounded-lg shadow p-2 md:p-4">
+            <ul class="space-y-4">
                 <li *ngFor="let permiso of permisos">
-                    <span class="font-medium">
-                        <label class="inline-flex items-center cursor-pointer">
-                            <input type="checkbox" class="sr-only peer" [checked]="permiso.isPermiso != 0" (click)="AsignarPermiso(permiso)">
-                            <div
-                                class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:bg-red-500 relative
-                                after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border 
-                                after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full">
-                            </div>
-                            <span class="ml-3 text-sm font-medium text-gray-700">{{permiso.nombre}}</span>
-                        </label>
-                    </span>
-                    <ul class="ml-6 mt-1 text-gray-700">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer" [checked]="permiso.isPermiso != 0"
+                            (click)="AsignarPermiso(permiso)" />
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:bg-red-500 relative
+              after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border 
+              after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+                        <span class="ml-3 text-sm font-medium text-gray-700">{{ permiso.nombre }}</span>
+                    </label>
+
+                    <!-- Submenús -->
+                    <ul class="ml-6 mt-2 space-y-2">
                         <li *ngFor="let permisoHijo of permiso.menusHijos">
                             <label class="inline-flex items-center cursor-pointer">
-                                <input type="checkbox" class="sr-only peer" [checked]="permisoHijo.isPermiso != 0" (click)="AsignarPermiso(permisoHijo)">
-                                <div
-                                    class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:bg-red-500 relative
-                                after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border 
-                                after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full">
+                                <input type="checkbox" class="sr-only peer" [checked]="permisoHijo.isPermiso != 0"
+                                    (click)="AsignarPermiso(permisoHijo)" />
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:bg-red-500 relative
+                  after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border 
+                  after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full">
                                 </div>
-                                <span class="ml-3 text-sm font-medium text-gray-700">{{permisoHijo.nombre}}</span>
+                                <span class="ml-3 text-sm font-medium text-gray-700">{{ permisoHijo.nombre }}</span>
                             </label>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
-
-
     </div>
 </div>

@@ -10,10 +10,11 @@ import { ObtenerCategoriaMenuResponse } from '../../../core/models/Categoria/Obt
 import { ObtenerProductoRequest } from '../../../core/models/Producto/ObtenerProducto/ObtenerProductoRequest';
 import { AgregarEditarProductoComponent } from "./agregar-editar-producto/agregar-editar-producto.component";
 import Swal from 'sweetalert2';
+import { AgregarEditarFichaTecnicaComponent } from "./agregar-editar-ficha-tecnica/agregar-editar-ficha-tecnica.component";
 
 @Component({
   selector: 'app-producto',
-  imports: [CommonModule, ReactiveFormsModule, PaginacionComponent, AgregarEditarProductoComponent],
+  imports: [CommonModule, ReactiveFormsModule, PaginacionComponent, AgregarEditarProductoComponent, AgregarEditarFichaTecnicaComponent],
   templateUrl: './producto.component.html',
   styleUrl: './producto.component.scss'
 })
@@ -30,6 +31,7 @@ export class ProductoComponent implements OnInit {
   productos: Producto[] = [];
 
   modalAbiertoAgregarEditar: boolean = false;
+  modalAbiertoAgregarEditarFichaTecnica: boolean = false;
 
   idProductoSeleccionado: number = 0;
 
@@ -83,6 +85,19 @@ export class ProductoComponent implements OnInit {
 
   cerrarModalAgregarEditar() {
     this.modalAbiertoAgregarEditar = false;
+    this.idProductoSeleccionado = 0;
+    this.ObtenerProducto();
+  }
+
+  abrirModalAgregarEditarFichaTecnica(id?: number) {
+    this.modalAbiertoAgregarEditarFichaTecnica = true;
+    if (id) {
+      this.idProductoSeleccionado = id;
+    }
+  }
+
+  cerrarModalAgregarEditarFichaTecnica() {
+    this.modalAbiertoAgregarEditarFichaTecnica = false;
     this.idProductoSeleccionado = 0;
     this.ObtenerProducto();
   }

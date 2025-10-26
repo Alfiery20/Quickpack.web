@@ -25,6 +25,7 @@ export class LoginComponent {
     this.formulario = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
       clave: ['', Validators.required],
+      recordar: [false]
     });
   }
 
@@ -37,6 +38,7 @@ export class LoginComponent {
     var userLogin: IniciarSesionRequest = {
       correo: this.formulario.value.correo,
       clave: this.formulario.value.clave,
+      recordar: this.formulario.value.recordar
     };
 
     this.autenticacionService.IniciarSesion(userLogin).subscribe(

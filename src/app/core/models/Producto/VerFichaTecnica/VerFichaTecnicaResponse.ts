@@ -1,0 +1,21 @@
+export interface VerFichaTecnicaResponse {
+    id: number,
+    largoCamara: number,
+    anchoCamara: number,
+    altoCamara: number,
+    largoMaquina: number,
+    anchoMaquina: number,
+    altoMaquina: number,
+    barraSellado: number,
+    capacidadBomba: number,
+    cicloInferior: number,
+    cicloSuperior: number,
+    peso: number,
+    potencia: number,
+    placaInsercion: number,
+    sistemaControl: string,
+    deteccionVacioFinal: string,
+    deteccionCarne: string,
+    softAir: string,
+    controlLiquidos: string
+}

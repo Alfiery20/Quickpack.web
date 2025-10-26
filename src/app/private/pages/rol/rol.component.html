@@ -1,11 +1,11 @@
-<div class="bg-white p-6 rounded-2xl shadow-md min-w-[50%] max-w-[100%]">
+<div class="bg-white p-6 rounded-2xl shadow-md w-full max-w-screen-xl mx-auto">
     <section>
         <h1 class="text-2xl font-bold text-gray-800">Roles</h1>
-        <hr class="my-3 border-gray-300">
+        <hr class="my-3 border-gray-300" />
     </section>
 
-    <div class="mt-5 grid grid-cols-1 sm:grid-cols-6 gap-4 items-end">
-        <div class="sm:col-span-2">
+    <div class="mt-5 grid grid-cols-1 sm:grid-cols-6 gap-4">
+        <div class="sm:col-span-3">
             <label for="first-name" class="block text-sm font-medium text-gray-900">Nombre</label>
             <form class="mt-2" [formGroup]="formulario">
                 <input id="first-name" type="text" name="first-name" autocomplete="given-name" formControlName="nombre"
@@ -15,17 +15,16 @@
 
         <div class="sm:col-span-2 flex items-end">
             <button (click)="ObtenerRoles()"
-                class="cursor-pointer w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
+                class="w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
                 <i class="bi bi-search"></i>
             </button>
         </div>
     </div>
 
-    <div class="mt-2 flex justify-end">
+    <div class="mt-4 flex justify-end">
         <button (click)="abrirModalAgregarEditar()"
-            class="cursor-pointer px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
-            <i class="bi bi-plus"></i>
-            Agregar
+            class="px-4 py-2 rounded-lg bg-red-700 text-white font-medium shadow hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-1 transition">
+            <i class="bi bi-plus"></i> Agregar
         </button>
     </div>
 
@@ -33,42 +32,37 @@
         <table class="min-w-full border border-gray-200 divide-y divide-gray-200 rounded-lg shadow-md">
             <thead class="bg-gray-100">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                        Nr.
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Nr.
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                        Id
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Id</th>
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Nombre
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                        Nombre
-                    </th>
-                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                        Estado
+                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Estado
                     </th>
                     <th class="px-6 py-3 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                        Acciones
-                    </th>
+                        Acciones</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 <tr *ngFor="let rol of roles; let i = index" [ngClass]="{ 'bg-gray-50': i % 2 === 0 }">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ i + 1}}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ i + 1 }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ rol.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ rol.nombre }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ rol.estado }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
                         <div class="inline-flex rounded-md shadow-sm" role="group">
                             <button type="button" (click)="abrirModalAgregarEditar(rol.id)"
-                                class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-l-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
+                                class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-l-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                             <button type="button" (click)="abrirModalAsignarPermisos(rol.id)"
-                                class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
+                                class="px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
                                 <i class="bi bi-menu-app"></i>
                             </button>
-                            <button type="button" (click)="CambiarEstado(rol.id)"
-                                [ngClass]="{ 'bg-green-600 hover:bg-green-700 focus:ring-green-400': rol.estado === 'INACTIVO', 'bg-red-600 hover:bg-red-700 focus:ring-red-400': rol.estado === 'ACTIVO' }"
-                                class="cursor-pointer px-4 py-2 text-sm font-medium text-white rounded-r-lg focus:outline-none focus:ring-2">
+                            <button type="button" (click)="CambiarEstado(rol.id)" [ngClass]="{
+                  'bg-green-600 hover:bg-green-700 focus:ring-green-400': rol.estado === 'INACTIVO',
+                  'bg-red-600 hover:bg-red-700 focus:ring-red-400': rol.estado === 'ACTIVO'
+                }" class="px-4 py-2 text-sm font-medium text-white rounded-r-lg focus:outline-none focus:ring-2">
                                 <i *ngIf="rol.estado === 'ACTIVO'; else reciclar" class="bi bi-trash"></i>
                                 <ng-template #reciclar>
                                     <i class="bi bi-arrow-clockwise"></i>
@@ -79,14 +73,14 @@
                 </tr>
             </tbody>
         </table>
+
         <app-paginacion [totalPages]="this.totalPaginas" [currentPage]="this.pagina" [total]="total"
             (pageChange)="Paginar($event)"></app-paginacion>
     </div>
-
-
 </div>
 
 <app-agregar-editar-rol [isOpen]="modalAbiertoAgregarEditar" (close)="cerrarModalAgregarEditar()"
     [idRol]="idRolSeleccionado"></app-agregar-editar-rol>
 
-<app-asignar-menu [isOpen]="modalAbiertoAsignarPermisos" (close)="cerrarModalPermisos()" [idRol]="idRolSeleccionado"></app-asignar-menu>
+<app-asignar-menu [isOpen]="modalAbiertoAsignarPermisos" (close)="cerrarModalPermisos()"
+    [idRol]="idRolSeleccionado"></app-asignar-menu>
