@@ -1,0 +1,149 @@
+<nav class="shadow-md px-4 py-3">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+        <!-- Logo a la izquierda -->
+        <a href="/" class="flex items-center gap-2 text-red-700 font-bold text-xl">
+            <img src="/logo.png" alt="Logo" class="h-20" />
+        </a>
+
+        <!-- Botón hamburguesa en móviles -->
+        <button class="md:hidden text-gray-600 hover:text-red-600 focus:outline-none"
+            (click)="menuAbierto = !menuAbierto">
+            <i class="bi bi-list text-2xl"></i>
+        </button>
+
+        <!-- Menús en pantallas medianas y grandes -->
+        <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-700">
+            <!-- Ejemplo de ítem con submenú -->
+            <li class="relative">
+                <button (click)="toggleMenu(0)" class="hover:text-red-600 transition">
+                    Tipo de Producto
+                </button>
+                <ul *ngIf="menuActivo === 0" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-999">
+                    <li *ngFor="let tipoProducto of this.tipoProductos">
+                        <a href="/" class="block px-4 py-2 hover:bg-red-50">{{tipoProducto.nombre}}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="/innovacion" class="hover:text-red-600 transition">Innovación</a></li>
+
+            <!-- Ítems sin submenú -->
+            <li><a href="/informacion" class="hover:text-red-600 transition">Nosotros</a></li>
+            <li><a href="/videos" class="hover:text-red-600 transition">Videos</a></li>
+            <!-- Otro ítem con submenú -->
+            <li><a href="/contacto" class="hover:text-red-600 transition">Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Menús desplegables en móviles -->
+    <div *ngIf="menuAbierto" class="md:hidden mt-2">
+        <ul class="flex flex-col gap-2 text-sm font-medium text-gray-700">
+
+            <!-- Inicio -->
+            <li>
+                <button (click)="toggleSubmenu(0)" class="w-full text-left px-2 py-1 hover:text-red-600 transition">
+                    Tipo de Producto
+                </button>
+                <ul *ngIf="submenuActivo === 0" class="ml-4 mt-1 flex flex-col gap-1">
+                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50 z-10">Producto A</a></li>
+                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50">Producto B</a></li>
+                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50">Producto C</a></li>
+                </ul>
+            </li>
+
+            <!-- Servicios con submenú -->
+            <li>
+                <button (click)="toggleSubmenu(1)" class="w-full text-left px-2 py-1 hover:text-red-600 transition">
+                    Innovación
+                </button>
+                <ul *ngIf="submenuActivo === 1" class="ml-4 mt-1 flex flex-col gap-1">
+                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50">IA</a></li>
+                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50">IoT</a></li>
+                </ul>
+            </li>
+
+            <!-- Contacto -->
+            <li><a href="/" class="block px-2 py-1 hover:text-red-600 transition">Nosotros</a></li>
+            <li><a href="/" class="block px-2 py-1 hover:text-red-600 transition">Videos</a></li>
+            <li><a href="/" class="block px-2 py-1 hover:text-red-600 transition">Contacto</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<section>
+    <router-outlet></router-outlet>
+</section>
+
+<!-- Pie de página -->
+<footer class="bg-red-700 text-white py-8 px-6">
+    <div class="max-w-screen-xl mx-auto grid xl:grid-cols-4 md:grid-cols-2 gap-8">
+
+        <div>
+            <h5 class="text-xl font-bold mb-4">Quickpack Perú S.A.C.</h5>
+            <p class="text-sm mb-2">Venta y distribución de maquinaria para empaque al vacío, abatidores y materiales de
+                embalaje.</p>
+            <p class="text-sm">Jr. Salaverry 1485 - Surquillo</p>
+            <p class="text-sm">(51) 993519524 / (51) 993519525 / (51) 993519526</p>
+            <p class="text-sm">info&#64;quickpackperu.com</p>
+        </div>
+
+        <div>
+            <h5 class="text-xl font-bold mb-4">Tipo Productos</h5>
+            <ul class="space-y-2 text-sm">
+                <li *ngFor="let tipoProducto of this.tipoProductos">{{ tipoProducto.nombre }}</li>
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="text-xl font-bold mb-4">Soporte</h5>
+            <ul class="space-y-2 text-sm">
+                <li>Servicio técnico autorizado</li>
+                <li>Repuestos originales</li>
+                <li>Manual de usuario</li>
+                <li>Garantías</li>
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="text-xl font-bold mb-4">Síguenos</h5>
+            <ul class="space-y-2 text-sm">
+                <li>
+                    <a href="https://www.facebook.com/QuickpackPeru" target="_blank" rel="noopener noreferrer"
+                        class="hover:underline">
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/quickpack_pe/" target="_blank" rel="noopener noreferrer"
+                        class="hover:underline">
+                        Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/QuickpackPeru" target="_blank" rel="noopener noreferrer"
+                        class="hover:underline">
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com/@quickpackperu" target="_blank" rel="noopener noreferrer"
+                        class="hover:underline">
+                        TikTok
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/@Quickpackperusac" target="_blank" rel="noopener noreferrer"
+                        class="hover:underline">
+                        YouTube
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="text-center text-sm mt-8 border-t border-white/20 pt-4">
+        © 2025 Quickpack Perú S.A.C. | Todos los derechos reservados.
+    </div>
+</footer>

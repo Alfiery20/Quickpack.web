@@ -1,6 +1,11 @@
 export class constants {
     static readonly apiUrl: string = 'https://localhost:7230/api/';
     static readonly tokenName: string = 'token';
+
+    static readonly API_KEY: string = 'AIzaSyAvp_gET5hvyKuwK13NgpXDTkeeAETEy20';
+    static readonly IdChanel: string = 'UC52_1xLXxA-6wXL4cdByUcQ';
+    static readonly MaxResult: number = 8;
+
     TipoDocumento(id: string) {
         switch (id) {
             case '1':
