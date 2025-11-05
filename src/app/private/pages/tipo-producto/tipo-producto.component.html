@@ -36,6 +36,8 @@
                     <th class="px-4 py-3 text-left font-semibold text-gray-700 uppercase tracking-wider">Nr.</th>
                     <th class="px-4 py-3 text-left font-semibold text-gray-700 uppercase tracking-wider">Id</th>
                     <th class="px-4 py-3 text-left font-semibold text-gray-700 uppercase tracking-wider">Nombre</th>
+                    <th class="px-4 py-3 text-left font-semibold text-gray-700 uppercase tracking-wider">Descripción
+                    </th>
                     <th class="px-4 py-3 text-left font-semibold text-gray-700 uppercase tracking-wider">Estado</th>
                     <th class="px-4 py-3 text-center font-semibold text-gray-700 uppercase tracking-wider">Acciones</th>
                 </tr>
@@ -45,6 +47,7 @@
                     <td class="px-4 py-3 whitespace-nowrap">{{ i + 1 }}</td>
                     <td class="px-4 py-3 whitespace-nowrap">{{ tipoProducto.id }}</td>
                     <td class="px-4 py-3 whitespace-nowrap">{{ tipoProducto.nombre }}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">{{ tipoProducto.descripcion.slice(0, 50) }}</td>
                     <td class="px-4 py-3 whitespace-nowrap">{{ tipoProducto.estado }}</td>
                     <td class="px-4 py-3 whitespace-nowrap text-center">
                         <div class="inline-flex rounded-md shadow-sm" role="group">

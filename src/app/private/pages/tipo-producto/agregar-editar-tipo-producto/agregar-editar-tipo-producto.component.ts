@@ -7,6 +7,7 @@ import { TipoProductoService } from '../../../../core/services/tipo-producto.ser
 import { AgregarTipoProductoRequest } from '../../../../core/models/TipoProducto/AgregarTipoProducto/AgregarTipoProductoRequest';
 import { EditarTipoProductoRequest } from '../../../../core/models/TipoProducto/EditarTipoProducto/EditarTipoProductoRequest';
 import Swal from 'sweetalert2';
+import { constants } from '../../../../core/models/utils/contants';
 
 @Component({
   selector: 'app-agregar-editar-tipo-producto',
@@ -25,6 +26,10 @@ export class AgregarEditarTipoProductoComponent implements OnChanges {
 
   tipoProductoSeleccionado: VerTipoProductoResponse = {} as VerTipoProductoResponse;
 
+  archivoSeleccionado!: File;
+
+  previewUrl: string | null = null;
+
   constructor(
     private fb: FormBuilder,
     private tipoProductoService: TipoProductoService
@@ -33,7 +38,9 @@ export class AgregarEditarTipoProductoComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.formulario = this.fb.group({
-      nombre: ['']
+      nombre: [''],
+      descripcion: [''],
+      multimedia: []
     });
 
     if (this.idTipoProducto != 0) {
@@ -42,9 +49,27 @@ export class AgregarEditarTipoProductoComponent implements OnChanges {
         (response) => {
           this.tipoProductoSeleccionado = response;
           this.formulario = this.fb.group({
-            nombre: [this.tipoProductoSeleccionado.nombre]
+            nombre: [this.tipoProductoSeleccionado.nombre],
+            descripcion: [this.tipoProductoSeleccionado.descripcion],
+            multimedia: []
           });
+          this.previewUrl = response.multimedia ?? null;
+
+          const fileType = response.multimedia ? response.multimedia.split(';')[0] : '';
         });
+    }
+  }
+
+  onSeleccionarArchivo(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.archivoSeleccionado = file;
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.previewUrl = reader.result as string;
+      };
+      reader.readAsDataURL(file);
     }
   }
 
@@ -61,9 +86,23 @@ export class AgregarEditarTipoProductoComponent implements OnChanges {
     }
   }
 
-  AgregarTipoProducto() {
+  async AgregarTipoProducto() {
+    if (!this.archivoSeleccionado) {
+      Swal.fire({
+        title: "Ups!",
+        text: "No se ha seleccionado ningún archivo",
+        icon: "warning"
+      });
+      return;
+    }
+
+    const base64 = new constants();
+    const archivoBase64 = await base64.encryptToBase64(this.archivoSeleccionado);
+
     var request: AgregarTipoProductoRequest = {
-      nombre: this.formulario.value.nombre
+      nombre: this.formulario.value.nombre,
+      descripcion: this.formulario.value.descripcion,
+      multimedia: archivoBase64
     };
     this.tipoProductoService.RegistrarTipoProducto(request).subscribe(
       (request) => {
@@ -85,10 +124,24 @@ export class AgregarEditarTipoProductoComponent implements OnChanges {
     );
   }
 
-  EditarTipoProducto() {
+  async EditarTipoProducto() {
+    if (!this.archivoSeleccionado) {
+      Swal.fire({
+        title: "Ups!",
+        text: "No se ha seleccionado ningún archivo",
+        icon: "warning"
+      });
+      return;
+    }
+
+    const base64 = new constants();
+    const archivoBase64 = await base64.encryptToBase64(this.archivoSeleccionado);
     var request: EditarTipoProductoRequest = {
       idTipoProducto: this.idTipoProducto,
-      nombre: this.formulario.value.nombre
+      nombre: this.formulario.value.nombre,
+      descripcion: this.formulario.value.descripcion,
+      multimedia: archivoBase64
+
     };
     this.tipoProductoService.EditarTipoProducto(request).subscribe(
       (request) => {

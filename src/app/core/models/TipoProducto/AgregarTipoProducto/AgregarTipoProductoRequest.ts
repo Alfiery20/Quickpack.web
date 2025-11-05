@@ -1,3 +1,5 @@
 export interface AgregarTipoProductoRequest {
-    nombre: string
+    nombre: string,
+    descripcion: string,
+    multimedia: string
 }

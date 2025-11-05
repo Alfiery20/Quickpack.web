@@ -9,6 +9,7 @@ import { EditarCategoriaRequest } from '../../../../core/models/Categoria/Editar
 import { TipoProductoComponent } from '../../tipo-producto/tipo-producto.component';
 import { ObtenerTipoProductoMenuResponse } from '../../../../core/models/TipoProducto/ObtenerTipoProductoMenu/ObtenerTipoProductoMenuResponse';
 import { TipoProductoService } from '../../../../core/services/tipo-producto.service';
+import { constants } from '../../../../core/models/utils/contants';
 
 @Component({
   selector: 'app-agregar-editar-categoria',
@@ -30,6 +31,10 @@ export class AgregarEditarCategoriaComponent implements OnChanges, OnInit {
 
   tipoProductos: ObtenerTipoProductoMenuResponse[] = [];
 
+  archivoSeleccionado!: File;
+
+  previewUrl: string | null = null;
+
   constructor(
     private fb: FormBuilder,
     private categoriaService: CategoriaService,
@@ -49,7 +54,8 @@ export class AgregarEditarCategoriaComponent implements OnChanges, OnInit {
       this.formulario = this.fb.group({
         nombre: [''],
         descripcion: [''],
-        idTipoProducto: [0]
+        idTipoProducto: [0],
+        multimedia: []
       });
 
       if (this.idCategoria != 0) {
@@ -59,8 +65,12 @@ export class AgregarEditarCategoriaComponent implements OnChanges, OnInit {
             this.formulario = this.fb.group({
               nombre: [this.categoriaSeleccionada.nombre],
               descripcion: [this.categoriaSeleccionada.descripcion],
-              idTipoProducto: [this.categoriaSeleccionada.idTipoProducto]
+              idTipoProducto: [this.categoriaSeleccionada.idTipoProducto],
+              multimedia: []
             });
+            this.previewUrl = response.multimedia ?? null;
+
+            const fileType = response.multimedia ? response.multimedia.split(';')[0] : '';
           });
       }
     }
@@ -79,10 +89,23 @@ export class AgregarEditarCategoriaComponent implements OnChanges, OnInit {
     }
   }
 
-  AgregarCategoria() {
+  async AgregarCategoria() {
+    if (!this.archivoSeleccionado) {
+      Swal.fire({
+        title: "Ups!",
+        text: "No se ha seleccionado ningún archivo",
+        icon: "warning"
+      });
+      return;
+    }
+
+    const base64 = new constants();
+    const archivoBase64 = await base64.encryptToBase64(this.archivoSeleccionado);
+
     var request: AgregarCategoriaRequest = {
       nombre: this.formulario.value.nombre,
       descripcion: this.formulario.value.descripcion,
+      multimedia: archivoBase64,
       idTipoProducto: this.formulario.value.idTipoProducto
     };
     this.categoriaService.RegistrarCategoria(request).subscribe(
@@ -105,11 +128,24 @@ export class AgregarEditarCategoriaComponent implements OnChanges, OnInit {
     );
   }
 
-  EditarCategoria() {
+  async EditarCategoria() {
+    if (!this.archivoSeleccionado) {
+      Swal.fire({
+        title: "Ups!",
+        text: "No se ha seleccionado ningún archivo",
+        icon: "warning"
+      });
+      return;
+    }
+
+    const base64 = new constants();
+    const archivoBase64 = await base64.encryptToBase64(this.archivoSeleccionado);
+
     var request: EditarCategoriaRequest = {
       idCategoria: this.idCategoria,
       nombre: this.formulario.value.nombre,
       descripcion: this.formulario.value.descripcion,
+      multimedia: archivoBase64,
       idTipoProducto: this.formulario.value.idTipoProducto
     };
     this.categoriaService.EditarCategoria(request).subscribe(
@@ -131,6 +167,20 @@ export class AgregarEditarCategoriaComponent implements OnChanges, OnInit {
       }
     );
   }
+
+  onSeleccionarArchivo(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.archivoSeleccionado = file;
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.previewUrl = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
 
   ValidarFormulario() {
     var nombre: string = this.formulario.value.nombre

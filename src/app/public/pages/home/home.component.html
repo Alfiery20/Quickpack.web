@@ -20,7 +20,8 @@
                 </button>
                 <ul *ngIf="menuActivo === 0" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-999">
                     <li *ngFor="let tipoProducto of this.tipoProductos">
-                        <a href="/" class="block px-4 py-2 hover:bg-red-50">{{tipoProducto.nombre}}</a>
+                        <a href="/tipoProducto/{{tipoProducto.id}}"
+                            class="block px-4 py-2 hover:bg-red-50">{{tipoProducto.nombre}}</a>
                     </li>
                 </ul>
             </li>

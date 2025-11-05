@@ -1,1 +1,111 @@
-<p>contactanos works!</p>
+<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg my-10">
+    <h2 class="font-bold mb-4 uppercase tracking-wide" style="color: var(--rojo-quickpack);">
+        Formulario de contacto
+    </h2>
+
+    <form class="space-y-4" [formGroup]="formulario">
+        <div>
+            <label for="tipoMensaje" class="block text-sm font-medium text-gray-700 mb-1">
+                Tipo de Solicitud
+            </label>
+            <select formControlName="tipoMensaje" id="tipoMensaje"
+                class="w-full rounded-lg border border-gray-300 px-3 py-2 bg-white text-sm text-gray-900 focus:ring-2 focus:ring-red-400 focus:outline-none">
+                <option disabled selected value="0">Selecciona</option>
+                <option value="Consulta General">Consulta General</option>
+                <option value="Asistencia">Asistencia</option>
+                <option value="Recambio">Recambio</option>
+                <option value="Reclamo">Reclamo</option>
+                <option value="Queja">Queja</option>
+            </select>
+        </div>
+
+        <!-- Nombre y Apellido -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Nombre y apellido
+                <span class="text-red-600">*</span>
+            </label>
+            <input type="text" formControlName="nombre"
+                class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Escribe tu nombre completo" required />
+        </div>
+
+        <!-- Email y Teléfono -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">
+                    Dirección Email
+                    <span class="text-red-600">*</span>
+                </label>
+                <input type="email" formControlName="emeal"
+                    class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                    placeholder="tucorreo@ejemplo.com" required />
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">
+                    Teléfono de contacto
+                    <span class="text-red-600">*</span>
+                </label>
+                <input type="tel" formControlName="telefono"
+                    class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                    placeholder="(51) 999-999-999" required />
+            </div>
+        </div>
+
+        <!-- Empresa y Población -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">
+                    Empresa
+                    <span class="text-red-600">*</span>
+                </label>
+                <input type="text" formControlName="empresa"
+                    class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                    placeholder="Nombre de la empresa" required />
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">
+                    Población
+                    <span class="text-red-600">*</span>
+                </label>
+                <input type="number" formControlName="poblacion"
+                    class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                    placeholder="Nro. Trabajadores" required />
+            </div>
+        </div>
+
+        <!-- Mensaje -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Su mensaje
+                <span class="text-red-600">*</span>
+            </label>
+            <textarea rows="4" formControlName="mensaje"
+                class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Escribe tu mensaje..." required></textarea>
+        </div>
+
+        <div class="flex items-center mb-6">
+            <input id="acceptInfo" type="checkbox" formControlName="acepto" required
+                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+            <label for="acceptInfo" class="ml-2 text-gray-700 text-sm">
+                Acepto el uso de mi información conforme a la política de privacidad.
+            </label>
+        </div>
+
+        <!-- Botón -->
+        <div class="text-right">
+            <button (click)="enviarCorreo()" [disabled]="!ValidarFormulario()"
+                class="w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white hover:bg-red-600 transition text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                Enviar Mensaje
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg my-10">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.0502137218355!2d-77.02019962415964!3d-12.108715043058949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c80ceab06567%3A0x4a90ea3d0726b5d3!2sQuickpack%20Per%C3%BA%20SAC!5e0!3m2!1ses-419!2spe!4v1761986561468!5m2!1ses-419!2spe"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
