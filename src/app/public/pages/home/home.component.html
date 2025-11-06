@@ -1,7 +1,7 @@
 <nav class="shadow-md px-4 py-3">
     <div class="max-w-screen-xl mx-auto flex items-center justify-between">
         <!-- Logo a la izquierda -->
-        <a href="/" class="flex items-center gap-2 text-red-700 font-bold text-xl">
+        <a [routerLink]="['/']" class="flex items-center gap-2 text-red-700 font-bold text-xl">
             <img src="/logo.png" alt="Logo" class="h-20" />
         </a>
 
@@ -20,19 +20,16 @@
                 </button>
                 <ul *ngIf="menuActivo === 0" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-999">
                     <li *ngFor="let tipoProducto of this.tipoProductos">
-                        <a href="/tipoProducto/{{tipoProducto.id}}"
+                        <a [routerLink]="['/tipoProducto', tipoProducto.id]"
                             class="block px-4 py-2 hover:bg-red-50">{{tipoProducto.nombre}}</a>
                     </li>
                 </ul>
             </li>
 
-            <li><a href="/innovacion" class="hover:text-red-600 transition">Innovación</a></li>
-
-            <!-- Ítems sin submenú -->
-            <li><a href="/informacion" class="hover:text-red-600 transition">Nosotros</a></li>
-            <li><a href="/videos" class="hover:text-red-600 transition">Videos</a></li>
-            <!-- Otro ítem con submenú -->
-            <li><a href="/contacto" class="hover:text-red-600 transition">Contacto</a></li>
+            <li><a [routerLink]="['/innovacion']" class="hover:text-red-600 transition">Innovación</a></li>
+            <li><a [routerLink]="['/informacion']" class="hover:text-red-600 transition">Nosotros</a></li>
+            <li><a [routerLink]="['/videos']" class="hover:text-red-600 transition">Videos</a></li>
+            <li><a [routerLink]="['/contacto']" class="hover:text-red-600 transition">Contacto</a></li>
         </ul>
     </div>
 
@@ -46,27 +43,26 @@
                     Tipo de Producto
                 </button>
                 <ul *ngIf="submenuActivo === 0" class="ml-4 mt-1 flex flex-col gap-1">
-                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50 z-10">Producto A</a></li>
-                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50">Producto B</a></li>
-                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50">Producto C</a></li>
-                </ul>
-            </li>
-
-            <!-- Servicios con submenú -->
-            <li>
-                <button (click)="toggleSubmenu(1)" class="w-full text-left px-2 py-1 hover:text-red-600 transition">
-                    Innovación
-                </button>
-                <ul *ngIf="submenuActivo === 1" class="ml-4 mt-1 flex flex-col gap-1">
-                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50">IA</a></li>
-                    <li><a href="/" class="block px-4 py-2 hover:bg-red-50">IoT</a></li>
+                    <li *ngFor="let tipoProducto of this.tipoProductos">
+                        <a [routerLink]="['/tipoProducto', tipoProducto.id]"
+                            class="block px-4 py-2 hover:bg-red-50 z-10">{{tipoProducto.nombre}}</a>
+                    </li>
                 </ul>
             </li>
 
             <!-- Contacto -->
-            <li><a href="/" class="block px-2 py-1 hover:text-red-600 transition">Nosotros</a></li>
-            <li><a href="/" class="block px-2 py-1 hover:text-red-600 transition">Videos</a></li>
-            <li><a href="/" class="block px-2 py-1 hover:text-red-600 transition">Contacto</a></li>
+            <li>
+                <a [routerLink]="['/innovacion']" class="block px-2 py-1 hover:text-red-600 transition">Innovación</a>
+            </li>
+            <li>
+                <a [routerLink]="['/informacion']" class="block px-2 py-1 hover:text-red-600 transition">Nosotros</a>
+            </li>
+            <li>
+                <a [routerLink]="['/videos']" class="block px-2 py-1 hover:text-red-600 transition">Videos</a>
+            </li>
+            <li>
+                <a [routerLink]="['/contacto']" class="block px-2 py-1 hover:text-red-600 transition">Contacto</a>
+            </li>
 
         </ul>
     </div>

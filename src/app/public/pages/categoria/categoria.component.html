@@ -2,10 +2,10 @@
     <img [src]="previewUrl" alt="Vista previa" class="absolute top-0 left-0 w-full h-full object-cover z-0" />
     <div class="p-15 relative z-10 flex flex-col items-center justify-end h-full px-4 text-center gap-4 bg-black/40">
         <h1 class="text-white text-3xl md:text-5xl font-bold drop-shadow-lg">
-            {{this.tipoProductoLanding.nombre}}
+            {{this.categoriaLanding.nombre}}
         </h1>
         <h3 class="text-white text-lg md:text-2xl font-semibold drop-shadow-lg max-w-3xl">
-            {{this.tipoProductoLanding.descripcion}}
+            {{this.categoriaLanding.descripcion}}
         </h3>
     </div>
 </div>
@@ -42,12 +42,26 @@
                 <i class="bi bi-chevron-right" style="color: var(--rojo-quickpack);"></i>
             </li>
 
+            <!-- Productos -->
+            <li class="flex items-center">
+                <a style="color: var(--rojo-quickpack);"
+                    class="flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">
+                    <i class="bi bi-bookmark pr-2"></i>
+                    Categoria
+                </a>
+            </li>
+
+            <!-- Separador -->
+            <li>
+                <i class="bi bi-chevron-right" style="color: var(--rojo-quickpack);"></i>
+            </li>
+
             <!-- Página actual -->
             <li class="flex items-center" aria-current="page">
                 <div class="flex items-center px-2 py-1 bg-red-200 rounded-md font-semibold shadow-sm"
                     style="color: var(--rojo-quickpack);">
                     <i class="bi bi-check pr-2" style="color: var(--rojo-quickpack);"></i>
-                    {{this.tipoProductoLanding.nombre}}
+                    {{this.categoriaLanding.nombre}}
                 </div>
             </li>
         </ol>
@@ -62,17 +76,17 @@
 
         <div class="flex justify-center">
             <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-items-center max-w-7xl w-full">
-                <div *ngFor="let categoria of this.tipoProductoLanding.categorias"
+                <div *ngFor="let categoria of this.categoriaLanding.producto"
                     class="bg-white rounded-2xl shadow-md hover:shadow-lg hover:scale-105 transition-shadow duration-300 overflow-hidden w-full max-w-sm">
                     <img [src]="categoria.multimedia" alt="Producto" class="w-full h-48 object-cover">
                     <div class="p-5 flex flex-col">
                         <h3 class="text-lg font-semibold mb-2">{{categoria.nombre}}</h3>
                         <p class="text-sm text-gray-600 mb-4 flex-grow">{{categoria.descripcion}}</p>
-                        <a [routerLink]="['/tipoProducto', idTipoProducto, 'categoria', categoria.idCategoria]"
+                        <!-- <a [routerLink]="['/tipoProducto', idTipoProducto, 'categoria', categoria.idCategoria]"
                             class="inline-block text-center text-white font-medium py-2 px-4 rounded-lg mt-auto"
                             style="background-color: var(--rojo-quickpack);">
                             Ver más
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>

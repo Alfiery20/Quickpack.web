@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LandingService } from '../../../core/services/landing.service';
 import { ObtenerTipoProductoLandingResponse } from '../../../core/models/Landing/ObtenerTipoProductoLanding/ObtenerTipoProductoLandingResponse';
 import { ContactanosComponent } from "../contactanos/contactanos.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tipo-producto',
-  imports: [ContactanosComponent],
+  imports: [ContactanosComponent, CommonModule, RouterModule],
   templateUrl: './tipo-producto.component.html',
   styleUrl: './tipo-producto.component.scss'
 })

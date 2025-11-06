@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnviarCorreoConsultaRequest } from '../../../core/models/Landing/EnviarCorreoConsulta/EnviarCorreoConsultaRequest';
 import { LandingService } from '../../../core/services/landing.service';
@@ -13,8 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class ContactanosComponent implements OnInit {
 
+  @Input() verMapa?: boolean = true;
   formulario!: FormGroup;
-
 
   constructor(
     private fb: FormBuilder,
@@ -74,17 +74,6 @@ export class ContactanosComponent implements OnInit {
     var poblacion = this.formulario.value.poblacion;
     var mensaje = this.formulario.value.mensaje
     var acepto = this.formulario.value.acepto
-    console.log({
-      tipoSolicitud, 
-      nombreCompleto,
-      correo,
-      telefono, 
-      empresa,
-      poblacion,
-      mensaje,
-      acepto
-    });
-    
 
     return (tipoSolicitud.length > 0) && (nombreCompleto.length > 0) && (correo.length > 0) &&
       (telefono.length > 0) && (empresa.length > 0) && (poblacion.length > 0) && (mensaje.length > 0) && (acepto)

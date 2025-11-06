@@ -8,6 +8,7 @@ import { InformacionEmpresaComponent } from "./pages/informacion-empresa/informa
 import { VideosEmpresaComponent } from "./pages/videos-empresa/videos-empresa.component";
 import { ContactanosComponent } from "./pages/contactanos/contactanos.component";
 import { TipoProductoComponent } from "./pages/tipo-producto/tipo-producto.component";
+import { CategoriaComponent } from "./pages/categoria/categoria.component";
 
 const routes: Routes = [
     {
@@ -23,6 +24,12 @@ const routes: Routes = [
             {
                 path: "tipoProducto/:id",
                 component: TipoProductoComponent,
+                children: [
+                ]
+            },
+            {
+                path: "tipoProducto/:idTipoProducto/categoria/:idCategoria",
+                component: CategoriaComponent,
                 children: [
                 ]
             },

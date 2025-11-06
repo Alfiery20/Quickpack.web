@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { EnviarCorreoConsultaResponse } from '../models/Landing/EnviarCorreoConsulta/EnviarCorreoConsultaResponse';
 import { EnviarCorreoConsultaRequest } from '../models/Landing/EnviarCorreoConsulta/EnviarCorreoConsultaRequest';
 import { ObtenerTipoProductoLandingResponse } from '../models/Landing/ObtenerTipoProductoLanding/ObtenerTipoProductoLandingResponse';
+import { ObtenerCategoriaLandingResponse } from '../models/Landing/ObtenerCategoriaLanding/ObtenerCategoriaLandingResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,10 @@ export class LandingService extends Api {
   ObtenerTipoProductoLanding(id: number): Observable<ObtenerTipoProductoLandingResponse> {
     const uri = `${this.url}Landing/obtenerTipoProductoLanding/${id}`;
     return this.http.get<ObtenerTipoProductoLandingResponse>(uri);
+  }
+
+  ObtenerCategoriaLanding(idTipoProducto: number, idCategoria: number): Observable<ObtenerCategoriaLandingResponse> {
+    const uri = `${this.url}Landing/obtenerTipoProductoLanding/${idTipoProducto}/categoria/${idCategoria}`;
+    return this.http.get<ObtenerCategoriaLandingResponse>(uri);
   }
 }
