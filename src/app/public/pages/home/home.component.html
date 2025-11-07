@@ -1,19 +1,15 @@
 <nav class="shadow-md px-4 py-3">
     <div class="max-w-screen-xl mx-auto flex items-center justify-between">
-        <!-- Logo a la izquierda -->
         <a [routerLink]="['/']" class="flex items-center gap-2 text-red-700 font-bold text-xl">
             <img src="/logo.png" alt="Logo" class="h-20" />
         </a>
 
-        <!-- Botón hamburguesa en móviles -->
         <button class="md:hidden text-gray-600 hover:text-red-600 focus:outline-none"
             (click)="menuAbierto = !menuAbierto">
             <i class="bi bi-list text-2xl"></i>
         </button>
 
-        <!-- Menús en pantallas medianas y grandes -->
         <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-700">
-            <!-- Ejemplo de ítem con submenú -->
             <li class="relative">
                 <button (click)="toggleMenu(0)" class="hover:text-red-600 transition">
                     Tipo de Producto
@@ -33,11 +29,9 @@
         </ul>
     </div>
 
-    <!-- Menús desplegables en móviles -->
     <div *ngIf="menuAbierto" class="md:hidden mt-2">
         <ul class="flex flex-col gap-2 text-sm font-medium text-gray-700">
 
-            <!-- Inicio -->
             <li>
                 <button (click)="toggleSubmenu(0)" class="w-full text-left px-2 py-1 hover:text-red-600 transition">
                     Tipo de Producto
@@ -50,7 +44,6 @@
                 </ul>
             </li>
 
-            <!-- Contacto -->
             <li>
                 <a [routerLink]="['/innovacion']" class="block px-2 py-1 hover:text-red-600 transition">Innovación</a>
             </li>
@@ -71,8 +64,6 @@
 <section>
     <router-outlet></router-outlet>
 </section>
-
-<!-- Pie de página -->
 <footer class="bg-red-700 text-white py-8 px-6">
     <div class="max-w-screen-xl mx-auto grid xl:grid-cols-4 md:grid-cols-2 gap-8">
 

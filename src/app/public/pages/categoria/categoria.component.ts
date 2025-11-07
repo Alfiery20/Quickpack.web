@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ContactanosComponent } from "../contactanos/contactanos.component";
-import { ObtenerCategoriaLandingResponse } from '../../../core/models/Landing/ObtenerCategoriaLanding/ObtenerCategoriaLandingResponse';
+import { FichaTenicaLanding, ObtenerCategoriaLandingResponse } from '../../../core/models/Landing/ObtenerCategoriaLanding/ObtenerCategoriaLandingResponse';
 import { CommonModule } from '@angular/common';
 import { LandingService } from '../../../core/services/landing.service';
 
@@ -20,6 +20,9 @@ export class CategoriaComponent implements OnInit {
 
   categoriaLanding: ObtenerCategoriaLandingResponse = {} as ObtenerCategoriaLandingResponse
 
+  fichaActivas: FichaTenicaLanding = {} as FichaTenicaLanding
+
+  index: number = 0
 
   constructor(
     private route: ActivatedRoute,
@@ -34,8 +37,22 @@ export class CategoriaComponent implements OnInit {
       (response) => {
         this.categoriaLanding = response;
         this.previewUrl = response.multimedia ?? null;
+        this.fichaActivas = this.categoriaLanding.fichasTecnicas[0]
       }
     )
+  }
+
+  asignarFichaTecnica(indexSelected: number) {
+    this.fichaActivas = this.categoriaLanding.fichasTecnicas[indexSelected];
+    this.index = indexSelected;
+  }
+
+  mirarFichaTencia(index: number) {
+    this.asignarFichaTecnica(index)
+    const element = document.getElementById('ficha_tecnica');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
 }

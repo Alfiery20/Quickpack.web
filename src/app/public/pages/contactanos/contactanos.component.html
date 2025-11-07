@@ -19,7 +19,6 @@
             </select>
         </div>
 
-        <!-- Nombre y Apellido -->
         <div>
             <label class="block text-gray-700 font-medium mb-1">
                 Nombre y apellido
@@ -30,7 +29,6 @@
                 placeholder="Escribe tu nombre completo" required />
         </div>
 
-        <!-- Email y Teléfono -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label class="block text-gray-700 font-medium mb-1">
@@ -52,7 +50,6 @@
             </div>
         </div>
 
-        <!-- Empresa y Población -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label class="block text-gray-700 font-medium mb-1">
@@ -74,7 +71,6 @@
             </div>
         </div>
 
-        <!-- Mensaje -->
         <div>
             <label class="block text-gray-700 font-medium mb-1">
                 Su mensaje
@@ -93,7 +89,6 @@
             </label>
         </div>
 
-        <!-- Botón -->
         <div class="text-right">
             <button (click)="enviarCorreo()" [disabled]="!ValidarFormulario()"
                 class="w-full sm:w-auto px-4 py-2 rounded-lg bg-red-700 text-white hover:bg-red-600 transition text-sm disabled:opacity-50 disabled:cursor-not-allowed">

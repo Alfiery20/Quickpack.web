@@ -1,9 +1,7 @@
 <div class="flex flex-col md:flex-row min-h-screen bg-gray-100">
-    <!-- OVERLAY (solo en móvil cuando se abre el sidebar) -->
     <div *ngIf="sidebarOpen" class="fixed inset-0 bg-black z-30 opacity-75" (click)="toggleSidebar()">
     </div>
 
-    <!-- SIDEBAR -->
     <aside
         class="bg-gray-800 text-white transition-all duration-300 overflow-hidden fixed top-0 left-0 h-screen z-40"
         [ngClass]="{ 'w-64': sidebarOpen, 'w-0': !sidebarOpen }">
@@ -39,16 +37,13 @@
             </nav>
 
             <div class="mt-4">
-                <!-- Footer pequeño del sidebar -->
                 <div class="text-sm text-gray-300">QuickPack • 2025</div>
             </div>
         </div>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <div class="flex flex-col flex-1 min-h-screen sm:ml-0">
         <header class="flex items-center justify-between bg-red-700 text-white p-4 shadow-md sm:sticky sm:top-0 z-30">
-            <!-- Botón burger: se desplaza cuando sidebarOpen es true -->
             <button (click)="toggleSidebar()" aria-label="Abrir menú"
                 class="text-2xl focus:outline-none cursor-pointer transition-transform duration-300">
                 ☰

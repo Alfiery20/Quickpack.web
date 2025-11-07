@@ -1,15 +1,12 @@
 <div *ngIf="isOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4">
     <div class="bg-white rounded-xl shadow-lg w-full max-w-sm md:max-w-lg p-4 md:p-6 relative">
 
-        <!-- Botón cerrar -->
         <button (click)="onClose()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 transition">
             <i class="bi bi-x-lg"></i>
         </button>
 
-        <!-- Título -->
         <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4">Agregar Beneficio</h2>
 
-        <!-- Formulario -->
         <div class="overflow-y-auto max-h-[60vh]">
             <form [formGroup]="formulario" class="space-y-4">
                 <div>
@@ -20,7 +17,6 @@
                 </div>
 
                 <div class="space-y-4">
-                    <!-- Input + Botón -->
                     <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
                         <div
                             class="flex-1 flex items-center bg-white border border-gray-200 rounded-lg shadow-sm px-3 py-2 focus-within:ring-2 focus-within:ring-red-400">
@@ -40,7 +36,6 @@
                         </button>
                     </div>
 
-                    <!-- Lista -->
                     <div>
                         <ul *ngIf="beneficios?.length; else emptyList" class="mt-2 space-y-2">
                             <li *ngFor="let item of beneficios; let i = index"
@@ -78,7 +73,6 @@
             </form>
         </div>
 
-        <!-- Botones -->
         <div class="mt-6 flex flex-col sm:flex-row justify-end gap-2">
             <button (click)="onClose()"
                 class="w-full sm:w-auto px-4 py-2 rounded-lg bg-gray-300 text-gray-800 hover:bg-gray-400 transition text-sm">

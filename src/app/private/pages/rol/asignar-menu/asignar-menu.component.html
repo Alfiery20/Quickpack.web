@@ -2,17 +2,14 @@
     <div
         class="bg-white rounded-xl shadow-lg w-full max-w-sm md:max-w-lg p-4 md:p-6 relative overflow-y-auto max-h-[90vh]">
 
-        <!-- Botón cerrar -->
         <button (click)="onClose()" class="absolute top-3 right-3 text-gray-500 hover:text-red-600 transition">
             <i class="bi bi-x-lg"></i>
         </button>
 
-        <!-- Título -->
         <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
             Asignar Menú a Rol
         </h2>
 
-        <!-- Lista de permisos -->
         <div class="bg-white rounded-lg shadow p-2 md:p-4">
             <ul class="space-y-4">
                 <li *ngFor="let permiso of permisos">
@@ -25,7 +22,6 @@
                         <span class="ml-3 text-sm font-medium text-gray-700">{{ permiso.nombre }}</span>
                     </label>
 
-                    <!-- Submenús -->
                     <ul class="ml-6 mt-2 space-y-2">
                         <li *ngFor="let permisoHijo of permiso.menusHijos">
                             <label class="inline-flex items-center cursor-pointer">
