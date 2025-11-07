@@ -37,7 +37,7 @@
                     </div>
 
                     <div>
-                        <ul *ngIf="beneficios?.length; else emptyList" class="mt-2 space-y-2">
+                        <ul *ngIf="beneficios.length; else emptyList" class="mt-2 space-y-2">
                             <li *ngFor="let item of beneficios; let i = index"
                                 class="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition">
                                 <div class="flex items-center gap-3">
