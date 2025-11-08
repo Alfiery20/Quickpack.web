@@ -16,43 +16,41 @@
 
 <section class="bg-white py-8 px-4 md:px-12">
     <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-        <div class="w-full hidden md:flex justify-center items-center relative overflow-hidden h-[700px]">
+        <div class="w-full hidden md:flex justify-center items-center relative overflow-hidden h-[400px] lg:h-[700px]">
             <img [src]="imagenes[indiceActivo]" alt="Imagen carrusel"
                 class="w-full h-full object-cover rounded-lg shadow-md transition-opacity duration-500 ease-in-out" />
-            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                 <span *ngFor="let img of imagenes; let i = index" class="w-3 h-3 rounded-full"
                     [class.bg-red-600]="i === indiceActivo" [class.bg-gray-300]="i !== indiceActivo"></span>
             </div>
         </div>
 
-        <div class="w-full">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-red-700">
+        <div class="w-full space-y-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-red-700">
                 Soluciones para alimentos y productos industriales
             </h2>
-            <p class="text-gray-700 mb-6 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed text-balance">
                 En Quickpack Perú ofrecemos soluciones integrales para el envasado al vacío y la conservación de
-                alimentos,
-                así como maquinaria y materiales para embalaje industrial. Representamos marcas líderes como Henkelman,
-                Afinox y UMA,
-                garantizando tecnología europea, eficiencia y durabilidad.
+                alimentos, así como maquinaria y materiales para embalaje industrial. Representamos marcas líderes como
+                Henkelman, Afinox y UMA, garantizando tecnología europea, eficiencia y durabilidad.
             </p>
 
-            <div class="grid sm:grid-cols-2 gap-8 border-t pt-4">
+            <div class="grid sm:grid-cols-2 gap-6 pt-4 border-t">
                 <div>
-                    <h3 class="text-xl font-bold text-red-700 mb-2">Hotelería</h3>
+                    <h3 class="text-xl font-bold text-red-700 mb-1">Hotelería</h3>
                     <p>Optimiza la presentación y conservación de alimentos con equipos compactos y eficientes.</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-red-700 mb-2">Supermercados</h3>
+                    <h3 class="text-xl font-bold text-red-700 mb-1">Supermercados</h3>
                     <p>Soluciones de empaque seguras para mantener frescura y prolongar la vida útil de tus productos.
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-red-700 mb-2">Procesamiento de alimentos</h3>
+                    <h3 class="text-xl font-bold text-red-700 mb-1">Procesamiento de alimentos</h3>
                     <p>Equipos industriales adaptados a los procesos de producción continua.</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-red-700 mb-2">Embalaje industrial</h3>
+                    <h3 class="text-xl font-bold text-red-700 mb-1">Embalaje industrial</h3>
                     <p>Protege componentes y materiales de manera profesional y resistente.</p>
                 </div>
             </div>
@@ -60,59 +58,61 @@
     </div>
 </section>
 
-<section class="bg-white py-4 px-4 md:px-12">
-    <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 items-center justify-center">
-        <div class="w-full bg-black text-center flex flex-col justify-center items-center p-6 shadow-md h-full">
-            <h4 class="text-xl font-bold text-gray-300 mb-4">Ventaja operativa y presentación profesional</h4>
-            <h2 class="text-3xl font-bold text-white mb-4">Líneas Automáticas Henkelman</h2>
-            <p class="text-white mb-6 max-w-lg">
+<section class="bg-white py-6 px-4 md:px-12">
+    <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 items-center gap-6">
+        <div
+            class="w-full bg-black text-center flex flex-col justify-center items-center p-6 shadow-md h-full space-y-4">
+            <h4 class="text-xl font-bold text-gray-300">Ventaja operativa y presentación profesional</h4>
+            <h2 class="text-3xl font-bold text-white">Líneas Automáticas Henkelman</h2>
+            <p class="text-white max-w-lg text-balance">
                 Las líneas automáticas Henkelman están diseñadas para industrias que requieren procesos rápidos,
-                consistentes y de alto volumen, con sellado preciso y máxima durabilidad. Tecnología y garantía
-                europea ahora disponibles en el Perú.
+                consistentes y de alto volumen, con sellado preciso y máxima durabilidad. Tecnología y garantía europea
+                ahora disponibles en el Perú.
             </p>
         </div>
 
-        <div class="w-full hidden md:flex justify-center items-center relative overflow-hidden h-[400px]">
+        <div class="w-full hidden md:flex justify-center items-center relative overflow-hidden h-[300px] lg:h-[400px]">
             <img src="/Carrusel_Inicio/05.jpg" alt="Imagen de línea automática"
-                class="w-full h-full object-cover shadow-md" />
+                class="w-full h-full object-cover rounded-lg shadow-md" />
         </div>
     </div>
 </section>
 
 <section class="bg-white py-8 text-center px-4">
-    <div class="max-w-screen-lg mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-red-700">
+    <div class="max-w-screen-lg mx-auto space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-red-700">
             La mejor opción en máquinas al vacío profesionales
         </h2>
-        <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Henkelman ofrece soluciones de envasado al vacío adaptadas a cada sector: hotelería, supermercados,
-            cocina profesional e industria alimentaria. Con más de 25 años de experiencia, combinamos innovación,
-            fiabilidad y una red global de soporte técnico.
+        <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance">
+            Henkelman ofrece soluciones de envasado al vacío adaptadas a cada sector: hotelería, supermercados, cocina
+            profesional e industria alimentaria. Con más de 25 años de experiencia, combinamos innovación, fiabilidad y
+            una red global de soporte técnico.
         </p>
     </div>
 </section>
 
-<section class="bg-white py-4 px-4 md:px-12">
-    <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 items-center justify-center">
-        <div class="w-full hidden md:flex justify-center items-center relative overflow-hidden h-[400px]">
+<section class="bg-white py-6 px-4 md:px-12">
+    <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 items-center gap-6">
+        <div class="w-full hidden md:flex justify-center items-center relative overflow-hidden h-[300px] lg:h-[400px]">
             <img src="/Carrusel_Inicio/03.jpg" alt="Imagen Henkelman"
-                class="w-full h-full object-cover shadow-" />
+                class="w-full h-full object-cover rounded-lg shadow-md" />
         </div>
 
-        <div class="w-full bg-black text-center flex flex-col justify-center items-center p-6 shadow-md h-full">
-            <h4 class="text-xl font-bold text-gray-300 mb-4">Más de Henkelman</h4>
-            <h2 class="text-3xl font-bold text-white mb-4">El socio ideal en embalaje</h2>
-            <p class="text-white mb-6 max-w-lg">
-                Fabricante holandés líder mundial en máquinas profesionales de envasado al vacío.
-                Henkelman trabaja con una red global de distribuidores oficiales, ofreciendo soporte técnico
-                confiable y repuestos garantizados. Calidad y eficiencia a tu alcance con Quickpack Perú.
+        <div
+            class="w-full bg-black text-center flex flex-col justify-center items-center p-6 shadow-md h-full space-y-4">
+            <h4 class="text-xl font-bold text-gray-300">Más de Henkelman</h4>
+            <h2 class="text-3xl font-bold text-white">El socio ideal en embalaje</h2>
+            <p class="text-white max-w-lg text-balance">
+                Fabricante holandés líder mundial en máquinas profesionales de envasado al vacío. Henkelman trabaja con
+                una red global de distribuidores oficiales, ofreciendo soporte técnico confiable y repuestos
+                garantizados. Calidad y eficiencia a tu alcance con Quickpack Perú.
             </p>
         </div>
     </div>
 </section>
 
 <section class="bg-white py-8 px-4 md:px-12">
-    <div class="max-w-screen-xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
+    <div class="max-w-screen-xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
         <div>
             <img src="https://www.henkelman.es/wp-content/uploads/2019/05/logo-ce_50x50.jpg" class="mx-auto mb-4" />
             <h3 class="text-xl font-bold text-red-700 mb-2">Certificación CE</h3>
