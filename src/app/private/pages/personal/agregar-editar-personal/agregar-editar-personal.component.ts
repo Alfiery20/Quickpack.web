@@ -63,10 +63,6 @@ export class AgregarEditarPersonalComponent implements OnChanges, OnInit {
           this.empleadoService.VerEmpleado(this.idEmpledo).subscribe(
             (response) => {
               this.personalSeleccionado = response;
-              console.log(this.personalSeleccionado);
-              console.log(this.formulario.value);
-
-
               this.formulario = this.fb.group({
                 tipoDocumento: [{ value: this.personalSeleccionado.tipoDocumento, disabled: true }],
                 nroDocumento: [{ value: this.personalSeleccionado.numeroDocumento, disabled: true }],
@@ -78,7 +74,6 @@ export class AgregarEditarPersonalComponent implements OnChanges, OnInit {
                 Clave: [{ value: '', disabled: true }],
                 rol: [this.personalSeleccionado.rol]
               });
-              console.log(this.formulario.value);
             });
         }
       });
@@ -170,9 +165,6 @@ export class AgregarEditarPersonalComponent implements OnChanges, OnInit {
     var correo: string = this.formulario.value.correo
     var clave: string = this.idEmpledo != 0 ? "" : this.formulario.getRawValue().clave;
     var rol: number = this.formulario.value.rol
-
-    console.log(nroDocumento);
-
 
     return (tipoDocumento != "0") && (nroDocumento.length > 0) &&
       (nombre.length > 0) && (apellidoPaterno.length > 0) &&

@@ -4,6 +4,7 @@ import { PrivateRoutingModule } from "../../../private/private-routing.module";
 import { RouterModule } from '@angular/router';
 import { LandingService } from '../../../core/services/landing.service';
 import { ObtenerTipoProductoMenuLandingResponse } from '../../../core/models/Landing/ObtenerTipoProductoMenuLanding/ObtenerTipoProductoMenuLandingResponse';
+import { constants } from '../../../core/models/utils/contants';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,8 @@ export class HomeComponent implements OnInit {
 
   tipoProductos: ObtenerTipoProductoMenuLandingResponse[] = [];
 
+  numberWssp: string = '';
+
   constructor(
     private landingService: LandingService
   ) {
@@ -25,6 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.numberWssp = constants.NumberPhone
     this.landingService.ObtenerTipoProductoLandingMenu().subscribe(
       (response) => {
         this.tipoProductos = response;

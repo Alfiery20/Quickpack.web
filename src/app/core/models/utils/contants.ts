@@ -6,6 +6,8 @@ export class constants {
     static readonly IdChanel: string = 'UC52_1xLXxA-6wXL4cdByUcQ';
     static readonly MaxResult: number = 8;
 
+    static readonly NumberPhone: string = '923475057'
+
     TipoDocumento(id: string) {
         switch (id) {
             case '1':

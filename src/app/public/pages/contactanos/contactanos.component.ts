@@ -76,6 +76,6 @@ export class ContactanosComponent implements OnInit {
     var acepto = this.formulario.value.acepto
 
     return (tipoSolicitud.length > 0) && (nombreCompleto.length > 0) && (correo.length > 0) &&
-      (telefono.length > 0) && (empresa.length > 0) && (poblacion.length > 0) && (mensaje.length > 0) && (acepto)
+      (telefono.length > 0) && (empresa.length > 0) && (poblacion > 0) && (mensaje.length > 0) && (acepto)
   }
 }

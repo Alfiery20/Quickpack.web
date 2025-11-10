@@ -32,8 +32,6 @@ export class TipoProductoComponent implements OnInit {
       (response) => {
         this.tipoProductoLanding = response;
         this.previewUrl = response.multimedia ?? null;
-        console.log(this.tipoProductoLanding);
-
       }
     )
 

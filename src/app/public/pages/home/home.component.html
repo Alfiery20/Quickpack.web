@@ -79,7 +79,9 @@
         <div>
             <h5 class="text-xl font-bold mb-4">Tipo Productos</h5>
             <ul class="space-y-2 text-sm">
-                <li *ngFor="let tipoProducto of this.tipoProductos">{{ tipoProducto.nombre }}</li>
+                <li *ngFor="let tipoProducto of this.tipoProductos">
+                    <a [routerLink]="['/tipoProducto', tipoProducto.id]" class="block">{{tipoProducto.nombre}}</a>
+                </li>
             </ul>
         </div>
 
@@ -135,3 +137,9 @@
         © 2025 Quickpack Perú S.A.C. | Todos los derechos reservados.
     </div>
 </footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/51{{numberWssp}}" target="_blank" rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center z-50 cursor-pointer">
+    <i class="bi bi-whatsapp text-3xl"></i>
+</a>
