@@ -4,13 +4,12 @@
     </h2>
 
     <div class="grid gap-8 px-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto">
-        <div *ngFor="let video of videos | slice:0:8"
+        <div *ngFor="let video of videos"
             class="bg-white rounded-2xl shadow-md overflow-hidden transform transition-all hover:scale-[1.02] hover:shadow-xl hover:ring-2 hover:ring-red-300">
             <div class="relative w-full aspect-video bg-black">
-                <video controls playsinline class="absolute inset-0 w-full h-full object-cover rounded-t-2xl">
-                    <source src="https://henkelman.com/themes/henkelman/assets/video/henkelman-wave.mp4"
-                        type="video/mp4" />
-                </video>
+                <iframe width="560" height="315" [src]="this.getVideoUrl(video.url)" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <div class="p-4 flex flex-col justify-between h-40">

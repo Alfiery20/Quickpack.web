@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit {
 
   tipoProductos: ObtenerTipoProductoMenuLandingResponse[] = [];
 
-  numberWssp: string = '';
+  numberWssp: string[] = [];
+  numeroRandom: string = '';
 
   constructor(
     private landingService: LandingService
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.numberWssp = constants.NumberPhone
+    this.numeroRandom = this.numberWssp[Math.floor(Math.random() * this.numberWssp.length)]
     this.landingService.ObtenerTipoProductoLandingMenu().subscribe(
       (response) => {
         this.tipoProductos = response;
