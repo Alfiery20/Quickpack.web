@@ -4,7 +4,7 @@
     </h2>
 
     <form class="space-y-6" [formGroup]="formulario">
-        <div>
+        <!-- <div>
             <label for="tipoMensaje" class="block text-sm font-medium text-gray-700 mb-1">
                 Tipo de Solicitud
             </label>
@@ -17,11 +17,19 @@
                 <option value="Reclamo">Reclamo</option>
                 <option value="Queja">Queja</option>
             </select>
+        </div> -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Producto a empacar
+            </label>
+            <input type="text" formControlName="producto"
+                class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                placeholder="Escribe el nombre del producto" required />
         </div>
 
         <div>
             <label class="block text-gray-700 font-medium mb-1">
-                Nombre y apellido <span class="text-red-600">*</span>
+                Nombre y apellido
             </label>
             <input type="text" formControlName="nombre"
                 class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
@@ -31,9 +39,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label class="block text-gray-700 font-medium mb-1">
-                    Dirección emeal <span class="text-red-600">*</span>
+                    Dirección email
                 </label>
-                <input type="emeal" formControlName="emeal"
+                <input type="email" formControlName="emeal"
                     class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                     placeholder="tucorreo@ejemplo.com" required />
             </div>
@@ -47,28 +55,20 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 gap-4">
             <div>
                 <label class="block text-gray-700 font-medium mb-1">
-                    Empresa <span class="text-red-600">*</span>
+                    Empresa
                 </label>
                 <input type="text" formControlName="empresa"
                     class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                     placeholder="Nombre de la empresa" required />
             </div>
-            <div>
-                <label class="block text-gray-700 font-medium mb-1">
-                    Población <span class="text-red-600">*</span>
-                </label>
-                <input type="number" formControlName="poblacion"
-                    class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                    placeholder="Nro. Trabajadores" required />
-            </div>
         </div>
 
         <div>
             <label class="block text-gray-700 font-medium mb-1">
-                Su mensaje <span class="text-red-600">*</span>
+                Su mensaje
             </label>
             <textarea rows="4" formControlName="mensaje"
                 class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:border-teal-500"

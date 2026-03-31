@@ -3,7 +3,6 @@ import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./pages/login/login.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { InicioComponent } from "./pages/inicio/inicio.component";
-import { InnovacionComponent } from "./pages/innovacion/innovacion.component";
 import { InformacionEmpresaComponent } from "./pages/informacion-empresa/informacion-empresa.component";
 import { VideosEmpresaComponent } from "./pages/videos-empresa/videos-empresa.component";
 import { ContactanosComponent } from "./pages/contactanos/contactanos.component";
@@ -34,12 +33,6 @@ const routes: Routes = [
                 ]
             },
             {
-                path: "innovacion",
-                component: InnovacionComponent,
-                children: [
-                ]
-            },
-            {
                 path: "informacion",
                 component: InformacionEmpresaComponent,
                 children: [
@@ -56,6 +49,10 @@ const routes: Routes = [
                 component: ContactanosComponent,
                 children: [
                 ]
+            },
+            {
+                path: "**",
+                redirectTo: "",
             }
         ]
     },

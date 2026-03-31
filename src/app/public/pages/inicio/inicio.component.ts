@@ -13,6 +13,11 @@ export class InicioComponent implements OnInit, OnDestroy {
     'Carrusel_Inicio/02.jpg',
     'Carrusel_Inicio/03.jpg'
   ];
+  imagenesEnvolvedoras = [
+    'Carrusel_envolvedoras/01.jpeg',
+    'Carrusel_envolvedoras/02.jpeg',
+    'Carrusel_envolvedoras/03.jpeg'
+  ];
   indiceActivo = 0;
   intervalo: any;
   segundosTransicion = 5;

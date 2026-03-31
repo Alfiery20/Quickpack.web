@@ -1,4 +1,4 @@
-<nav class="shadow-md px-4 py-3">
+<nav class="sticky top-0 z-50 bg-white shadow-md px-4 py-3">
     <div class="max-w-screen-xl mx-auto flex items-center justify-between">
         <a [routerLink]="['/']" class="flex items-center gap-2 text-red-700 font-bold text-xl">
             <img src="/logo.png" alt="Logo" class="h-20" />
@@ -22,7 +22,7 @@
                 </ul>
             </li>
 
-            <li><a [routerLink]="['/innovacion']" class="hover:text-red-600 transition">Innovación</a></li>
+            <!-- <li><a [routerLink]="['/innovacion']" class="hover:text-red-600 transition">Innovación</a></li> -->
             <li><a [routerLink]="['/informacion']" class="hover:text-red-600 transition">Nosotros</a></li>
             <li><a [routerLink]="['/videos']" class="hover:text-red-600 transition">Videos</a></li>
             <li><a [routerLink]="['/contacto']" class="hover:text-red-600 transition">Contacto</a></li>
@@ -97,35 +97,49 @@
 
         <div>
             <h5 class="text-xl font-bold mb-4">Síguenos</h5>
-            <ul class="space-y-2 text-sm">
-                <li>
+            <ul class="space-y-2 text-sm text-gray-800">
+                <li class="items-center text-white hover:text-gray-300 transition">
                     <a href="https://www.facebook.com/QuickpackPeru" target="_blank" rel="noopener noreferrer"
-                        class="hover:underline">
-                        Facebook
+                        class="flex item-center gap-2 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.1v-2.9h2.1V9.7c0-2.1 1.2-3.3 3.2-3.3.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.2v1.5h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z" />
+                        </svg>
+                        Quickpack Perú
                     </a>
                 </li>
-                <li>
+
+                <li class="items-center text-white hover:text-gray-300 transition">
                     <a href="https://www.instagram.com/quickpack_pe/" target="_blank" rel="noopener noreferrer"
-                        class="hover:underline">
-                        Instagram
+                        class="flex item-center gap-2 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm6.5-.8a1.2 1.2 0 1 1-1.2-1.2 1.2 1.2 0 0 1 1.2 1.2z" />
+                        </svg>
+                        quickpack_pe
                     </a>
                 </li>
-                <li>
-                    <a href="https://www.facebook.com/QuickpackPeru" target="_blank" rel="noopener noreferrer"
-                        class="hover:underline">
-                        Facebook
-                    </a>
-                </li>
-                <li>
+
+                <li class="items-center text-white hover:text-gray-300 transition">
                     <a href="https://www.tiktok.com/@quickpackperu" target="_blank" rel="noopener noreferrer"
-                        class="hover:underline">
-                        TikTok
+                        class="flex item-center gap-2 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2v14.5a3.5 3.5 0 1 1-3-3.45V10a7 7 0 1 0 6 6.93V8.9a6.5 6.5 0 0 0 4 1.6V7.3a4.5 4.5 0 0 1-4-4.3H12z" />
+                        </svg>
+                        Quickpack
                     </a>
                 </li>
-                <li>
+
+                <li class="text-white hover:text-gray-300 transition">
                     <a href="https://www.youtube.com/@Quickpackperusac" target="_blank" rel="noopener noreferrer"
-                        class="hover:underline">
-                        YouTube
+                        class="flex items-center gap-2 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.7.6 9.4.6 9.4.6s7.7 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8zM9.8 15.5v-7l6.2 3.5-6.2 3.5z" />
+                        </svg>
+
+                        <span>Quickpack Perú S.A.C.</span>
                     </a>
                 </li>
             </ul>

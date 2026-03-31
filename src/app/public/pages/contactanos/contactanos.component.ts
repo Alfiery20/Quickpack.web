@@ -24,7 +24,7 @@ export class ContactanosComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.fb.group({
-      tipoMensaje: ['0'],
+      producto: [''],
       nombre: [''],
       emeal: [''],
       telefono: [''],
@@ -37,7 +37,7 @@ export class ContactanosComponent implements OnInit {
 
   enviarCorreo() {
     var request: EnviarCorreoConsultaRequest = {
-      tipoSolicitud: this.formulario.value.tipoMensaje,
+      producto: this.formulario.value.producto,
       nombreCompleto: this.formulario.value.nombre,
       correo: this.formulario.value.emeal,
       telefono: this.formulario.value.telefono,
@@ -66,16 +66,8 @@ export class ContactanosComponent implements OnInit {
   }
 
   ValidarFormulario() {
-    var tipoSolicitud = this.formulario.value.tipoMensaje;
-    var nombreCompleto = this.formulario.value.nombre;
-    var correo = this.formulario.value.emeal;
     var telefono = this.formulario.value.telefono;
-    var empresa = this.formulario.value.empresa;
-    var poblacion = this.formulario.value.poblacion;
-    var mensaje = this.formulario.value.mensaje
-    var acepto = this.formulario.value.acepto
 
-    return (tipoSolicitud.length > 0) && (nombreCompleto.length > 0) && (correo.length > 0) &&
-      (telefono.length > 0) && (empresa.length > 0) && (poblacion > 0) && (mensaje.length > 0) && (acepto)
+    return (telefono.length > 0)
   }
 }

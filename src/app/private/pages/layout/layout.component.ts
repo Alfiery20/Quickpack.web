@@ -31,6 +31,10 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.userLogin = JSON.parse(JSON.stringify(this.localStorage.getItem('usuario')));
+    if (this.userLogin === null || this.userLogin === undefined) {
+      this.router.navigate(['/login']);
+    }
+    
     var id = this.userLogin.id;
     var idRol = this.userLogin.idRol;
     var obtenerMenu: ObtenerMenuRequest = {

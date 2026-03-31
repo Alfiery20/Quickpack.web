@@ -1,5 +1,5 @@
 export interface EnviarCorreoConsultaRequest {
-    tipoSolicitud: string,
+    producto: string,
     nombreCompleto: string,
     correo: string,
     telefono: string,

@@ -7,10 +7,12 @@ import { GuardDecryp } from '../models/Guard/guard.decryp';
 export const authorizeGuard: CanActivateChildFn = (childRoute, state) => {
   const localServi = inject(LocalStorageService);
   const router = inject(Router);
-
+  
   var token = localServi.getItem('token');
+  console.log('-------');
+  console.log(token);
+  console.log('-------');
   var url = (state.url).split('/')[2] ?? '/intranet';
-
   if (token) {
     const decoded = jwtDecode<GuardDecryp>(token);
     decoded.permisos = typeof decoded.permisos === 'string' ? JSON.parse(decoded.permisos) : decoded.permisos;
